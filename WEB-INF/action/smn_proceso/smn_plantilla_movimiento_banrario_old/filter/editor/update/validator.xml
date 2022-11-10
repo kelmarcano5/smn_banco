@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_entidad_rf' type='integer' required='true' label='${lbl:b_entity}' maxlen='10'/>
+	<parameter id='smn_sucursal_rf' type='integer' required='false' label='${lbl:b_subsidiary}' maxlen='10'/>
+	<parameter id='smn_banco_rf' type='integer' required='true' label='${lbl:b_bank}' maxlen='10'/>
+	<parameter id='smn_cuenta_bancaria_rf' type='integer' required='true' label='${lbl:b_bank_account}' maxlen='10'/>
+	<parameter id='pmb_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_template_bank_movement}' maxlen='10'/>
+	<parameter id='pmb_fecha_movimiento' type='date' required='true' label='${lbl:b_store_date}' maxlen='10'/>
+
+
+</validator>

@@ -1,0 +1,82 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<!-- <col width='7%'/> -->
+	<col width='7%'/>
+	<!-- <col width='7%'/> -->
+	<col width='7%'/>
+	<col width='7%'/>
+	<!-- <col width='7%'/> -->
+	<col width='7%'/>
+	<!-- <col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/> -->
+	<col width='7%'/>
+	<col width='7%'/>
+	<!-- <col width='7%'/> -->
+	<col width='7%'/>
+	<col width='3%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="18" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th> 
+		<th></th>
+		<th></th>
+		<th></th>
+		<!-- <th class='sortable' onclick='sortBy("lcr_codigo","query-smnlineacredito.sql")'>${lbl:b_code}</th> -->
+		<th class='sortable' onclick='sortBy("smn_entidades_rf","query-smnlineacredito.sql")'>${lbl:b_entity}</th>
+		<!-- <th class='sortable' onclick='sortBy("smn_sucursal_rf_combo","query-smnlineacredito.sql")'>${lbl:b_subsidiary}</th> -->
+		<th class='sortable' onclick='sortBy("smn_entidad_financiera_id","query-smnlineacredito.sql")'>${lbl:b_financial_entity}</th>
+		<th class='sortable' onclick='sortBy("lcr_descripcion","query-smnlineacredito.sql")'>${lbl:b_description}</th>
+		<!-- <th class='sortable' onclick='sortBy("smn_cuenta_bancaria_rf_combo","query-smnlineacredito.sql")'>${lbl:b_bank_account}</th> -->
+		<th class='sortable' onclick='sortBy("lcr_monto_linea_ml","query-smnlineacredito.sql")'>${lbl:b_amount_line_ml}</th>
+		<!-- <th class='sortable' onclick='sortBy("smn_moneda_rf","query-smnlineacredito.sql")'>${lbl:b_coin}</th> -->
+		<!-- <th class='sortable' onclick='sortBy("smn_tasa_rf","query-smnlineacredito.sql")'>${lbl:b_rate}</th> -->
+		<!-- <th class='sortable' onclick='sortBy("lcr_monto_linea_ma","query-smnlineacredito.sql")'>${lbl:b_amount_line_ma}</th> -->
+		<th class='sortable' onclick='sortBy("lcr_saldo_disponible","query-smnlineacredito.sql")'>${lbl:b_available_balance}</th>
+		<th class='sortable' onclick='sortBy("lcr_estatus","query-smnlineacredito.sql")'>${lbl:b_status}</th>
+		<!-- <th class='sortable' onclick='sortBy("lcr_vigencia","query-smnlineacredito.sql")'>${lbl:b_date_validation}</th> -->
+		<th class='sortable' onclick='sortBy("lcr_fecha_registro","query-smnlineacredito.sql")'>${lbl:b_store_date}</th>
+		<th>CR</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_linea_credito_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_linea_credito_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_linea_credito_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/view-list-details.png"  onclick="changeStatus('${fld:smn_linea_credito_id}')" title="${lbl:b_change_status}"></td>
+		<!-- <td align='left'>${fld:lcr_descripcion}</td> -->
+		<td>${fld:smn_entidades_rf}</td>
+		<!-- <td>${fld:smn_sucursal_rf}</td> -->
+		<td>${fld:smn_entidad_financiera_id}</td>
+		<td align='left'>${fld:lcr_codigo}</td>
+		<!-- <td>${fld:smn_cuenta_bancaria_rf}</td> -->
+		<td align='right'>${fld:lcr_monto_linea_ml@#,###,##0.00}</td>
+		<!-- <td>${fld:smn_moneda_rf}</td>
+		<td>${fld:smn_tasa_rf}</td> -->
+		<!-- <td align='right'>${fld:lcr_monto_linea_ma@#,###,##0.00}</td> -->
+		<td align='right'>${fld:lcr_saldo_disponible@#,###,##0.00}</td>
+		<td align='left'>${fld:lcr_estatus}</td>
+		<!-- <td>${fld:lcr_vigencia@dd-MM-yyyy}</td> -->
+		<td>${fld:lcr_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="relacion('${fld:smn_linea_credito_id}')" title="${lbl:b_credit_line}"></td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="4" cellStep="0" name="${lbl:b_bank_movement}"/>
+	
+	<excel 
+		recordset='query.sql' 
+		sheetname='${lbl:b_bank_movement}' 
+		filename='${lbl:b_bank_movement}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_entidades_rf' label='${lbl:b_entity}' />
+		<col id='smn_entidad_financiera_id' label='${lbl:b_financial_entity}' />
+		<col id='smn_cuenta_bancaria_rf' label='${lbl:b_bank_account}' />
+		<col id='smn_documentos_generales_rf' label='${lbl:b_origen_document}' />
+		<col id='smn_modulo_origen_rf' label='${lbl:b_source_module}' />
+		<col id='smn_tipo_documento_id' label='${lbl:b_document_type}' />
+		<col id='mov_beneficiario_pago' label='${lbl:b_beneficiary_payments}' />
+		<col id='mov_estatus' label='${lbl:b_status}' />
+		<col id='mov_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

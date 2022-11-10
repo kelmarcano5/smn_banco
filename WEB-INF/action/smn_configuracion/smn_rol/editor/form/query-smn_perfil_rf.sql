@@ -1,0 +1,1 @@
+select smn_perfil_id as id, prf_codigo ||' - '|| prf_descripcion as item from smn_base.smn_perfil order by smn_perfil_id

@@ -1,0 +1,3 @@
+<rows>
+lcr_fecha_registro="${fld:lcr_fecha_registro}"    lcr_vigencia="${fld:lcr_vigencia}"    lcr_estatus="${fld:lcr_estatus}"    lcr_saldo_disponible="${fld:lcr_saldo_disponible}"    lcr_monto_linea_ma="${fld:lcr_monto_linea_ma}"    smn_tasa_rf="${fld:smn_tasa_rf}"    smn_moneda_rf="${fld:smn_moneda_rf}"    lcr_monto_linea_ml="${fld:lcr_monto_linea_ml}"    smn_cuenta_bancaria_rf="${fld:smn_cuenta_bancaria_rf}"    smn_entidad_financiera_id="${fld:smn_entidad_financiera_id}"    smn_sucursal_rf="${fld:smn_sucursal_rf}"    smn_entidades_rf="${fld:smn_entidades_rf}"    lcr_descripcion="${fld:lcr_descripcion}"    lcr_codigo="${fld:lcr_codigo}"    
+</rows>

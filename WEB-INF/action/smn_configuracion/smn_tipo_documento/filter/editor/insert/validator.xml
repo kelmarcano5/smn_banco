@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='tdo_codigo' type='varchar' required='true' label='${lbl:b_tdo_code}' maxlen='16'/>
+	<parameter id='tdo_descripcion' type='varchar' required='true' label='${lbl:b_tdo_description}' maxlen='64'/>
+	<parameter id='tdo_estatus' type='varchar' required='true' label='${lbl:b_tdo_status}' maxlen='2'/>
+	<parameter id='tdo_vigencia' type='date' required='true' label='${lbl:b_tdo_vigencia}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='tdo_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='tdo_descripcion'/>
+
+
+</validator>

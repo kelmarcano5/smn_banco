@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_documento_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_entidad_financiera_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='edb_doc_equiv_bancario' type='varchar' required='true' maxlen='6'/>
+	<parameter id='smn_tipo_documento_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='edb_descrip_bancaria' type='varchar' required='true' maxlen='25'/>
+	<parameter id='edb_estatus' type='varchar' required='true' maxlen='2'/>
+	<parameter id='edb_vigencia' type='date' required='true' maxlen='10'/>
+</validator>

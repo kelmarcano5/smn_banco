@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='lcr_codigo' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='lcr_codigo' rule='like' />
+	<parameter id='lcr_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='64'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='lcr_descripcion' rule='like' />
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entity}' maxlen='10'/>
+	<parameter id='smn_entidad_financiera_id' type='integer' required='false' label='${lbl:b_financial_entity}' maxlen='10'/>
+	<parameter id='smn_cuenta_bancaria_rf' type='integer' required='false' label='${lbl:b_bank_account}' maxlen='10'/>
+	<parameter id='lcr_monto_linea_ml' type='double' required='false' label='${lbl:b_amount_line_ml}' maxlen='10'/>
+	<parameter id='lcr_saldo_disponible' type='double' required='false' label='${lbl:b_available_balance}' maxlen='10'/>
+	<parameter id='lcr_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='lcr_estatus' rule='like' />
+	<parameter id='lcr_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

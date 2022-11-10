@@ -1,0 +1,417 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner" id="encabezado_tabla">
+	${lbl:b_template_bank_movement}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario de filtro-->
+<form name="form1" onsubmit="return search()" style="width:650px;">
+
+	<!--titulo-->
+	<h1>${lbl:b_filter_find}</h1>
+
+	<table>
+	
+	<!--ancho de la columna de etiquetas-->
+	<col style="width:40%">
+
+	<!--campos-->
+		<tr>
+		<td>${lbl:b_entity}</td>
+		<td>
+			<select class="entidad" name="smn_entidad_rf" id="smn_entidad_rf" onchange="chgCombo1(smn_entidad_rf.options[smn_entidad_rf.selectedIndex].text,'smn_entidad_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_entidad_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+				</smn_entidad_rf_rows>
+			</select> 
+			<input id="smn_entidad_rf_name" name="smn_entidad_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_subsidiary}</td>
+		<td>
+			<select class="sucursal" name="smn_sucursal_rf" id="smn_sucursal_rf" onchange="chgCombo(smn_sucursal_rf.options[smn_sucursal_rf.selectedIndex].text,'smn_sucursal_rf_name');" disabled>
+				<option value="">[Cualquiera]</option>
+				<smn_sucursal_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+				</smn_sucursal_rf_rows>
+			</select> 
+			<input id="smn_sucursal_rf_name" name="smn_sucursal_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_bank}</td>
+		<td>
+			<select class="banco" name="smn_banco_rf" id="smn_banco_rf" onchange="chgCombo2(smn_banco_rf.options[smn_banco_rf.selectedIndex].text,'smn_banco_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_banco_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+				</smn_banco_rf_rows>
+			</select> 
+			<input id="smn_banco_rf_name" name="smn_banco_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_bank_account}</td>
+		<td>
+			<select class="cuenta" name="smn_cuenta_bancaria_rf" id="smn_cuenta_bancaria_rf" onchange="chgCombo(smn_cuenta_bancaria_rf.options[smn_cuenta_bancaria_rf.selectedIndex].text,'smn_cuenta_bancaria_rf_name');" disabled>
+				<option value="">[Cualquiera]</option>
+				<smn_cuenta_bancaria_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+				</smn_cuenta_bancaria_rf_rows>
+			</select> 
+			<input id="smn_cuenta_bancaria_rf_name" name="smn_cuenta_bancaria_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_movement_date}</td>
+		<td>
+			<input id="pmb_fecha_movimiento" name="pmb_fecha_movimiento" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('pmb_fecha_movimiento')">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_status}</td>
+		<td>
+			<select class="estatus" name="pmb_estatus" id="pmb_estatus">
+				<option value="">[Cualquiera]</option>
+				<option value="GE">${lbl:b_generated}</option>
+				<option value="CN">${lbl:b_concil}</option>
+			</select> 
+		</td>
+	</tr>
+
+	
+	</table>
+
+	
+	<!--botones-->	
+	<input type="submit" value="${lbl:b_find_button}" class="button">
+	<!-- <input id="grabar" type="submit" value="${lbl:b_add_button}"  onclick="showEditor()" class="button"> -->
+	<input type="button" value="${lbl:b_clean_button}" class="button" onclick="clearForm('form1')">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">
+	
+</form>
+
+<!--panel de respuesta AJAX #1-->
+<div id="response" style="display:none; width:100%; margin-top:10px;"></div>
+	
+</body>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	//inicializacion de la pagina cuando carga
+	onload = function()
+	{ 
+		showFilter();
+		
+		$('.entidad').select2();
+		$('.sucursal').select2();
+		$('.banco').select2();
+		$('.cuenta').select2();
+		$('.estatus').select2();
+		//document.form1.pmb_fecha_registro_ini.onkeypress = keypressDate;
+		//document.form1.pmb_fecha_registro_fin.onkeypress = keypressDate;
+
+		search();
+	} 
+	
+	function chgCombo1(text,id)
+	{		
+		document.form1.smn_sucursal_rf.disabled=false;
+		var combo = document.getElementById('smn_entidad_rf');
+		var valueCombo = getSelectedIndex(combo);
+		geo_id1 = valueCombo.split("-").pop().trim();
+		// alert(geo_id1);
+		//findLocation(geo_id0, '');
+		if (id!=null && id!="")
+		{
+			return ajaxCall(	
+							httpMethod="GET",
+							uri="${def:actionroot}/getsucursal?id=" + geo_id1,
+							divResponse=null,
+							divProgress="status",
+							formName="form1",
+							afterResponseFn=setElementFirstIndex('smn_sucursal_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+	}
+
+	function chgCombo2(text,id)
+	{		
+		// alert("1  "+text+""+id);
+		document.form1.smn_cuenta_bancaria_rf.disabled=false;
+		var combo = document.getElementById('smn_banco_rf');
+		var valueCombo = getSelectedIndex(combo);
+		geo_id1 = valueCombo.split("-").pop().trim();
+		//findLocation(geo_id0, '');
+		if (id!=null && id!="")
+		{
+			return ajaxCall(	
+							httpMethod="GET",
+							uri="${def:actionroot}/getcuentabancaria?id=" + geo_id1,
+							divResponse=null,
+							divProgress="status",
+							formName="form1",
+							afterResponseFn=setElementFirstIndex('smn_cuenta_bancaria_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+	}
+	
+		
+	//mostrar filtro de busqueda
+	function showFilter()
+	{
+		document.getElementById("response").style.display='none';
+		setFocusOnForm("form1");
+	}
+	
+	//ejecutar consulta
+	function search()
+	{
+		var url = "${def:actionroot}/search";
+		
+		//determina si refresca y se para en la pagina actual o en la pagina 1
+		if (currentPage > 0)
+			url = "${def:actionroot}/search?currentpage=" + currentPage;
+
+		//definir funcion goBack()
+		_goBackFn = showFilter;
+		
+		clearErrorMessages();
+
+		//llamada Ajax...
+		return ajaxCall(	httpMethod="POST", 
+							uri=url, 
+							divResponse="response", 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=showFilter);
+
+	}
+
+	//mostrar una pagina del grid
+	function viewPage()
+	{
+		var url = "${def:actionroot}/view";
+		//llama a la funcion para ir a la pagina indicada 
+		gotoPage(url);
+	}		
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//invoca la generacion de un PDF en un popup
+	function openPDF()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+
+	//invoca la generacion de un Excel en un popup
+	function openExcel()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//exportar a xml
+	function openXml() {
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/xml/search?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//exportar a texto
+	function openTxt() {
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/txt/search?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//envio de emails
+	function openEmails() {
+		var uri = "${def:context}${def:actionroot}/email/form";					
+		openDialog("editor0", uri, 950, 600);	
+	}
+	
+	//mostrar el detalle de un registro
+	function getDetail(id)
+	{
+//		//alert('Colocar su c�digo aqu�.')
+		
+		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+		openDialog("dialog", uri, 650, 390);
+		
+	}
+	
+	//muestra un DIV+IFRAME con el formulario de CRUD
+	function showEditor(id)
+	{
+//		//alert('Colocar su c�digo aqu�.')
+		
+		var uri = "";
+		if (id==null)
+		 	uri = "${def:context}${def:actionroot}/editor/form";
+		else
+			uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
+			
+		openDialog("editor", uri, 650, 390);
+		
+	}
+			
+	function deleteRecord(id) {
+//		//alert('Colocar su c�digo aqu�.')
+	
+		alertBox('${lbl:b_delete_record_button}', '${lbl:b_delete_button}', '${lbl:b_cancel_button}', 'deleteRecordOK(' + id + ')')				
+	}
+		
+	//eliminar un registro
+	function deleteRecordOK(id) {
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/delete?id=" + id,
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+
+	function setElementFirstIndex(id)
+	{
+		var combo = document.getElementById(id);
+		combo.selectedIndex = 0;
+	}
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	function insertComboBox(code, combo, description) {
+		var valueText = code;
+		if (description != null)
+		{
+			valueText = valueText + ' - ' + description;
+		}
+		//alert("Insert Combo: "+valueText);
+        combo.options[combo.options.length] = new Option(valueText);
+	}
+	//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToCombo(code, description, field)
+	{
+	    var combo = document.getElementById(field);	    
+	    insertComboBox(code, combo, description);
+	}
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndex(code, combo, description)
+	{
+	    for (var i = 0; i < combo.options.length; i++)
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText)
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndex(combo)
+	{
+	    for (var i = 0; i < combo.options.length; i++)
+	    {
+	        if (combo.options[i].selected == true)
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+	function getIDSelectedIndex(combo)
+	{
+	    for (var i = 0; i < combo.options.length; i++)
+	    {
+	        if (combo.options[i].selected == true)
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+
+
+	function conciliar(id,st){
+             
+            if(st=='Generado' || st=='En Conciliacion'){
+                uri = "${def:context}${def:actionroot}/conciliar?plantilla_id="+id;
+                openDialog("dialog",uri,300,260);
+            }else{
+                alertBox('Status invalido para conciliar.', '${lbl:b_continue_button}')
+            }
+
+
+           }
+    function cierre(id,st){
+             
+            if(st=='En Conciliacion'){
+                uri = "${def:context}${def:actionroot}/cerrar?plantilla_id="+id;
+                openDialog("dialog",uri,1300,700);
+            }else{
+                alertBox('Status invalido para cerrar.', '${lbl:b_continue_button}')
+            }
+
+
+           }
+
+	function relacion(id2, ent, suc, ban, cta) {
+		uri = "${def:context}${def:actionroot}/smn_plantilla_movimiento_bancario_det/form?id2="+ id2+"&smn_entidades_rf="+ent+"&smn_sucursal_rf="+suc+"&smn_entidad_financiera_id="+ban+"&smn_cuenta_bancaria_rf="+cta;
+		
+		openDialog("dialog", uri, 1300, 700);
+	}
+			
+</script>
+
+</html>

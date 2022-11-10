@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='tcr_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='tcr_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='64'/>
+	<parameter id='tcr_metodo_calculo' type='varchar' required='true' label='${lbl:b_calculation_method}' maxlen='2'/>
+	<parameter id='tcr_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='tcr_vigencia' type='date' required='true' label='${lbl:b_date_validation}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_credit_type}' maxlen='10'/>
+
+
+</validator>

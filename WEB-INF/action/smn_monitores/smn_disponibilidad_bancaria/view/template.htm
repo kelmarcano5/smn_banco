@@ -1,0 +1,61 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="12" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_entidad_rf','query-smndisponibilidadbancaria.sql')" >${lbl:b_entity}</th>
+		<th class='sortable' onclick="sortBy('smn_sucursal_rf','query-smndisponibilidadbancaria.sql')" >${lbl:b_subsidiary}</th>
+		<th class='sortable' onclick="sortBy('smn_banco_rf','query-smndisponibilidadbancaria.sql')" >${lbl:b_bank}</th>
+		<th class='sortable' onclick="sortBy('smn_cuenta_bancaria_rf','query-smndisponibilidadbancaria.sql')" >${lbl:b_bank_account}</th>
+		<th class='sortable' onclick="sortBy('sal_fecha','query-smndisponibilidadbancaria.sql')" >${lbl:b_movement_date}</th>
+
+		<th class='sortable' onclick="sortBy('sal_saldo_inicial','query-smndisponibilidadbancaria.sql')" >${lbl:b_initial_balance}</th>
+		<th class='sortable' onclick="sortBy('sal_deposito','query-smndisponibilidadbancaria.sql')" >${lbl:b_bank_deposit}</th>
+		<th class='sortable' onclick="sortBy('sal_nota_credito','query-smndisponibilidadbancaria.sql')" >${lbl:b_credit_note}</th>
+		<th class='sortable' onclick="sortBy('sal_cheque','query-smndisponibilidadbancaria.sql')" >${lbl:b_check}</th>
+		<th class='sortable' onclick="sortBy('sal_nota_debito','query-smndisponibilidadbancaria.sql')" >${lbl:b_debit_note}</th>
+		<th class='sortable' onclick="sortBy('sal_saldo_final','query-smndisponibilidadbancaria.sql')" >${lbl:b_final_balance}</th>		
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_saldo_cta_bancaria_id}')" title="${lbl:b_view_detail}"></td>
+		<td align="center">${fld:smn_entidad_rf}</td>
+		<td align="center">${fld:smn_sucursal_rf}</td>
+		<td align="center">${fld:smn_banco_rf}</td>
+		<td align="center">${fld:smn_cuenta_bancaria_rf}</td>
+		<td align="center">${fld:sal_fecha@dd-MM-yyyy}</td>
+		<td align="right">${fld:sal_saldo_inicial@##,###,###,##0.00}</td>
+  		<td align="right">${fld:sal_deposito@##,###,###,##0.00}</td>
+  		<td align="right">${fld:sal_nota_credito@##,###,###,##0.00}</td>
+  		<td align="right">${fld:sal_cheque@##,###,###,##0.00}</td>
+  		<td align="right">${fld:sal_nota_debito@##,###,###,##0.00}</td>
+  		<td align="right">${fld:sal_saldo_final@##,###,###,##0.00}</td>
+	</tr>
+	</rows>
+
+</table>

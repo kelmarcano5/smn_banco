@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entity}' maxlen='10'/>
+	<parameter id='smn_sucursal_rf' type='integer' required='false' label='${lbl:b_subsidiary}' maxlen='10'/>
+	<parameter id='smn_banco_rf' type='integer' required='false' label='${lbl:b_bank}' maxlen='10'/>
+	<parameter id='smn_cuenta_bancaria_rf' type='integer' required='false' label='${lbl:b_bank_account}' maxlen='10'/>
+	<parameter id='sal_fecha_desde' type='date' required='false' label='${lbl:b_movement_date}' maxlen='10'/>
+	<parameter id='sal_fecha_hasta' type='date' required='false' label='${lbl:b_movement_date}' maxlen='10'/>
+</validator>

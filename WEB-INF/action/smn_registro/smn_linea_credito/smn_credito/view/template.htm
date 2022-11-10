@@ -1,0 +1,73 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='3%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="16" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_documento_id","query-smncredito.sql")'>${lbl:b_document}</th>
+		<th class='sortable' onclick='sortBy("cre_numero_documento","query-smncredito.sql")'>${lbl:b_document_number}</th>
+		<th class='sortable' onclick='sortBy("cre_fecha_solicitud","query-smncredito.sql")'>${lbl:b_request_date}</th>
+		<th class='sortable' onclick='sortBy("cre_fecha_otorgamiento","query-smncredito.sql")'>${lbl:b_grant_date}</th>
+		<th class='sortable' onclick='sortBy("cre_tasa_interes","query-smncredito.sql")'>${lbl:b_interest_rate}</th>
+		<th class='sortable' onclick='sortBy("cre_meses_credito","query-smncredito.sql")'>${lbl:b_credit_months}</th>
+		<th class='sortable' onclick='sortBy("cre_monto_credito_ml","query-smncredito.sql")'>${lbl:b_amount_credit_ml}</th>
+		<th class='sortable' onclick='sortBy("cre_estatus_financiero","query-smncredito.sql")'>${lbl:b_financiero_status}</th>
+		<th class='sortable' onclick='sortBy("cre_estatus_proceso","query-smncredito.sql")'>${lbl:b_process_status}</th>
+		<th class='sortable' onclick='sortBy("cre_fecha_registro","query-smncredito.sql")'>${lbl:b_store_date}</th>
+		<th>CC</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_credito_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_credito_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_credito_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/accept.png" onclick="relacion('${fld:smn_linea_credito_id}')" title="${lbl:b_approve}"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png"  onclick="changeStatus('${fld:smn_movimiento_bancario_id}')" title="${lbl:b_generate}"></td>
+		<td>${fld:smn_documento_id}</td>
+		<td>${fld:cre_numero_documento}</td>
+		<td>${fld:cre_fecha_solicitud@dd-MM-yyyy}</td>
+		<td>${fld:cre_fecha_otorgamiento@dd-MM-yyyy}</td>
+		<td align='right'>${fld:cre_tasa_interes@#,###,##0.00}</td>
+		<td align='right'>${fld:cre_meses_credito@#,###,##0.00}</td>
+		<td align='right'>${fld:cre_monto_credito_ml@#,###,##0.00}</td>
+		<td align='left'>${fld:cre_estatus_financiero}</td>
+		<td align='left'>${fld:cre_estatus_proceso}</td>
+		<td>${fld:cre_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="relacion('${fld:smn_linea_credito_id}')" title="${lbl:b_credit_fees}"></td>
+
+	</tr>
+	</rows>
+
+</table>

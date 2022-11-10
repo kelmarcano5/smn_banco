@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Insertar registro 
+	</summary>
+
+	<log>false</log>
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>smn_linea_credito_id</colname>
+			<colname>smn_documento_id</colname>
+			<colname>cre_numero_documento</colname>
+			<colname>cre_tipo_credito_id</colname>
+			<colname>cre_fecha_solicitud</colname>
+			<colname>cre_fecha_esperada_aprobacion</colname>
+			<colname>cre_fecha_otorgamiento</colname>
+			<colname>cre_fecha_primera_cuota</colname>
+			<colname>cre_fecha_ultima_cuota</colname>
+			<colname>cre_tasa_interes</colname>
+			<colname>cre_meses_credito</colname>
+			<colname>cre_cantidad_cuotas</colname>
+			<colname>cre_monto_solicitado_ml</colname>
+			<colname>cre_monto_credito_ml</colname>
+			<colname>smn_moneda_rf</colname>
+			<colname>smn_tasa_rf</colname>
+			<colname>cre_monto_intereses_ml</colname>
+			<colname>cre_monto_comision_ml</colname>
+			<colname>cre_monto_solicitado_ma</colname>
+			<colname>cre_monto_credito_ma</colname>
+			<colname>cre_monto_intereses_ma</colname>
+			<colname>cre_monto_comision_ma</colname>
+			<colname>cre_estatus_financiero</colname>
+			<colname>cre_estatus_proceso</colname>
+			<colname>cre_fecha_registro</colname>
+		
+		</cols>
+		<table>smn_banco.smn_credito</table>
+		<oper>AÑADIR</oper>
+		<area>Carga de datos</area>
+		<!--
+			query para obtener el ID generado o nombre de 
+			la columna que contiene el pkey, si es query, 
+			el alias del campo debe ser "id"
+		-->
+		<pkey>select ${seq:currval@smn_banco.seq_smn_credito} as id</pkey>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableTransaction</classname>
+		<validator>true</validator>
+		<transaction>true</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="nextval.sql" source="sql" scope="transaction" />
+	</transaction>
+
+	<query>insert.sql</query>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>script.js</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/javascript</content-type>
+		<expiration>0</expiration>
+		<print mode="form" recordset="_request" />
+		<print mode="form" recordset="nextval.sql" />
+	</output>
+	
+	<!-- Envio de email declarativo -->
+	<mail enabled="false">
+		<subject>Subject</subject>
+		<mail-to>martin.cordova@gmail.com</mail-to>
+		<body>body.txt</body>
+	</mail>
+
+</config>

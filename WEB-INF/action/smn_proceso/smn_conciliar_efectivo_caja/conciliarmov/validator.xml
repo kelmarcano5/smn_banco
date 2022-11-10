@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id="movimiento_bancario_id" type="integer" required="true" label="movimiento_bancario_id" />
+	<parameter id="entidad_rf" type="integer" required="false" label="entidad_rf" />
+	<parameter id="sucursal_rf" type="integer" required="false" label="sucursal_rf" />
+	<parameter id="banco_rf" type="integer" required="false" label="smn_banco_rf" />
+	<parameter id="cuenta_bancaria_rf" type="integer" required="false" label="cuenta_bancaria_rf" />
+	<parameter id="fecha_movimiento" type="date" required="false" label="fecha_movimiento" />
+	<parameter id="detalle_id" type="integer" required="false" label="detalle_id" />
+	<parameter id="equivalencia_ban" type="integer" required="false" label="equivalencia_ban" />
+	<parameter id="numero_ref_ban" type="varchar" required="false" label="numero_ref_ban" />
+	<parameter id="numero_ref_bancaria" type="varchar" required="false" label="numero_ref_bancaria" />
+	<parameter id="monto_ml_ban" type="double" required="false" label="monto_ml_ban" />
+	<parameter id="detalle_id2" type="integer" required="false" label="detalle_id2" />
+	<parameter id="mov_id" type="integer" required="false" label="mov_id" />
+	<parameter id="status" type="varchar" required="false" label="status" />
+	<parameter id="tipo_doc" type="varchar" required="false" label="tipo_doc" />
+	<parameter id="tipo_doc_id" type="integer" required="false" label="tipo_doc_id" />
+	<parameter id="descripcion" type="varchar" required="false" label="descripcion" />
+	<parameter id="moneda_rf" type="integer" required="false" label="moneda_rf" />
+	<parameter id="fecha" type="date" required="false" label="fecha" />
+	<parameter id="tasa_rf" type="integer" required="false" label="tasa_rf" />
+	<parameter id="monto_ma_ban" type="double" required="false" label="monto_ma_ban" />
+	<parameter id="monto_ml_sal_ant" type="double" required="false" label="monto_ml_ban" />
+	<parameter id="monto_ml_deposito" type="double" required="false" label="monto_ml_ban" />
+	<parameter id="monto_ml_nota_credito" type="double" required="false" label="monto_ml_ban" />
+	<parameter id="monto_ml_cheque" type="double" required="false" label="monto_ml_ban" />
+	<parameter id="monto_ml_nota_debito" type="double" required="false" label="monto_ml_ban" />
+	<parameter id="monto_ml_saldo_final" type="double" required="false" label="monto_ml_ban" />
+	<parameter id="saldo_cta_bancaria_id" type="integer" required="false" label="saldo_cta_bancaria_id" />
+	<parameter id="smn_formas_pago_rf" type="integer" required="false" label="smn_formas_pago_rf" />
+	<parameter id="doc_es_cobranza" type="varchar" required="false" label="doc_es_cobranza" />
+	<parameter id="smn_cliente_rf" type="integer" required="false" label="smn_cliente_rf" />
+</validator>

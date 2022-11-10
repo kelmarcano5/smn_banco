@@ -1,0 +1,30 @@
+select
+	smn_banco.smn_credito.smn_linea_credito_id,
+	smn_banco.smn_credito.smn_documento_id,
+	smn_banco.smn_credito.cre_numero_documento,
+	smn_banco.smn_credito.cre_tipo_credito_id,
+	smn_banco.smn_credito.cre_fecha_solicitud,
+	smn_banco.smn_credito.cre_fecha_esperada_aprobacion,
+	smn_banco.smn_credito.cre_fecha_otorgamiento,
+	smn_banco.smn_credito.cre_fecha_primera_cuota,
+	smn_banco.smn_credito.cre_fecha_ultima_cuota,
+	smn_banco.smn_credito.cre_tasa_interes,
+	smn_banco.smn_credito.cre_meses_credito,
+	smn_banco.smn_credito.cre_cantidad_cuotas,
+	smn_banco.smn_credito.cre_monto_solicitado_ml,
+	smn_banco.smn_credito.cre_monto_credito_ml,
+	smn_banco.smn_credito.smn_moneda_rf,
+	smn_banco.smn_credito.smn_tasa_rf,
+	smn_banco.smn_credito.cre_monto_intereses_ml,
+	smn_banco.smn_credito.cre_monto_comision_ml,
+	smn_banco.smn_credito.cre_monto_solicitado_ma,
+	smn_banco.smn_credito.cre_monto_credito_ma,
+	smn_banco.smn_credito.cre_monto_intereses_ma,
+	smn_banco.smn_credito.cre_monto_comision_ma,
+	smn_banco.smn_credito.cre_estatus_financiero,
+	smn_banco.smn_credito.cre_estatus_proceso,
+	smn_banco.smn_credito.cre_fecha_registro
+from
+	smn_banco.smn_credito 
+where
+	smn_banco.smn_credito.smn_credito_id = ${fld:id}

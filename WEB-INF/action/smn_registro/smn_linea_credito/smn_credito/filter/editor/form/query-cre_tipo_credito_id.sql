@@ -1,0 +1,1 @@
+select smn_tipo_credito_id as id, tcr_codigo||' - '||tcr_descripcion as item from smn_banco.smn_tipo_credito order by smn_tipo_credito

@@ -1,0 +1,1 @@
+select smn_monedas_id as id, mon_codigo||' - '||mon_nombre as item from smn_base.smn_monedas order by smn_monedas_id

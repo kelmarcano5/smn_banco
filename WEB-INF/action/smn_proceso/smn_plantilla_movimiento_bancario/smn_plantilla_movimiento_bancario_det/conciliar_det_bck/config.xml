@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Proceso de generar conciliaacion bancaria
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>proceso.conciliacionBancariaDet</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>message.html</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>html; charset=iso-8859-1</content-type>
+		<expiration>0</expiration>
+		<print mode="form" recordset="_request" />
+	</output>
+
+</config>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Ejecutar consulta y enrutar dependiendo de que un recordset
+		tenga o no registros
+	</summary>
+
+	<log>false</log>
+
+	<!--configura el control de paginacion-->
+	<set-request-attribute id="paging.recordset" value="query-smnlineacredito.sql" />
+	<set-request-attribute id="paging.pagesize" value="10" />
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>lcr_codigo</colname>
+			<colname>lcr_descripcion</colname>
+			<colname>smn_entidades_rf</colname>
+			<colname>smn_entidad_financiera_id</colname>
+			<colname>smn_cuenta_bancaria_rf</colname>
+			<colname>lcr_monto_linea_ml</colname>
+			<colname>lcr_saldo_disponible</colname>
+			<colname>lcr_estatus</colname>
+			<colname>lcr_fecha_registro</colname>
+		
+		</cols>
+		<table>smn_banco.smn_linea_credito</table>
+		<oper>CONSULTA</oper>
+		<area>Consulta</area>
+		<!-- 
+ 			para auditoria de consulta permite obtener la cantidad de registro obtenidos
+ 			de la busqueda (opcional)
+ 		-->
+		<recordCount recordset="query-smnlineacredito.sql"/>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableSearch</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+	</transaction>
+	
+	<searchCols>lcr_codigo;lcr_descripcion;smn_entidades_rf;smn_entidad_financiera_id;smn_cuenta_bancaria_rf;lcr_monto_linea_ml;lcr_saldo_disponible;lcr_estatus;lcr_fecha_registro;</searchCols>
+
+	<on-exit return-code="0" forward-to="/action/initview" />
+	<on-exit return-code="1" forward-to="${def:actionroot}/notfound" />
+
+</config>

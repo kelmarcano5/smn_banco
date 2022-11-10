@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_documento_id' type='integer' required='false' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='cre_numero_documento' type='integer' required='false' label='${lbl:b_document_number}' maxlen='10'/>
+	<parameter id='cre_fecha_solicitud' type='date' required='false' label='${lbl:b_request_date}' maxlen='10'/>
+	<parameter id='cre_fecha_otorgamiento' type='date' required='false' label='${lbl:b_grant_date}' maxlen='10'/>
+	<parameter id='cre_tasa_interes' type='double' required='false' label='${lbl:b_interest_rate}' maxlen='10'/>
+	<parameter id='cre_meses_credito' type='double' required='false' label='${lbl:b_credit_months}' maxlen='10'/>
+	<parameter id='cre_monto_credito_ml' type='double' required='false' label='${lbl:b_amount_credit_ml}' maxlen='10'/>
+	<parameter id='cre_estatus_financiero' type='varchar' required='false' label='${lbl:b_financiero_status}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cre_estatus_financiero' rule='like' />
+	<parameter id='cre_estatus_proceso' type='varchar' required='false' label='${lbl:b_process_status}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cre_estatus_proceso' rule='like' />
+	<parameter id='cre_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

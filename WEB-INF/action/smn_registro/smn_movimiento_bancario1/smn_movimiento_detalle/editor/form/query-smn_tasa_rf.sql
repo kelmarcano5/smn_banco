@@ -1,0 +1,1 @@
+select smn_tasas_de_cambio_id as id, tca_moneda_referencia||' - '||tca_tasa_cambio as item from smn_base.smn_tasas_de_cambio order by smn_tasas_de_cambio_id

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entity}' maxlen='10'/>
+	<parameter id='smn_entidad_financiera_id' type='integer' required='false' label='${lbl:b_financial_entity}' maxlen='10'/>
+	<parameter id='smn_cuenta_bancaria_rf' type='integer' required='false' label='${lbl:b_bank_account}' maxlen='10'/>
+	<parameter id='smn_documentos_generales_rf' type='integer' required='false' label='${lbl:b_origen_document}' maxlen='10'/>
+	<parameter id='smn_modulo_origen_rf' type='integer' required='false' label='${lbl:b_source_module}' maxlen='10'/>
+	<parameter id='smn_tipo_documento_id' type='integer' required='false' label='${lbl:b_document_type}' maxlen='10'/>
+	<parameter id='mov_beneficiario_pago' type='varchar' required='false' label='${lbl:b_beneficiary_payments}' maxlen='200'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='mov_beneficiario_pago' rule='like' />
+	<parameter id='mov_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='mov_estatus' rule='like' />
+	<parameter id='mov_fecha_registro_desde' type='date' required='false' label='${lbl:b_store_date_grater_than}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' date1='mov_fecha_registro_desde' date2='mov_fecha_registro_hasta' id='mov_fecha_registro_desde' />
+	<parameter id='mov_fecha_registro_hasta' type='date' required='false' label='${lbl:b_store_date_less_than}' maxlen='10'/>
+</validator>

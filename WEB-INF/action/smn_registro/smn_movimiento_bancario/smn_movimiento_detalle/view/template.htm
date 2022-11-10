@@ -1,0 +1,49 @@
+<!--data grid-->
+<table class="datagrid" style="width:75%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_concepto_id","query-smnmovimientodetalle.sql")'>${lbl:b_concept}</th>
+		<th class='sortable' onclick='sortBy("dmo_tipo_movimiento","query-smnmovimientodetalle.sql")'>${lbl:b_movement_type}</th>
+		<th class='sortable' onclick='sortBy("dmo_monto_ml","query-smnmovimientodetalle.sql")'>${lbl:b_amount_ml}</th>
+		<th class='sortable' onclick='sortBy("dmo_monto_ma","query-smnmovimientodetalle.sql")'>${lbl:b_amount_ma}</th>
+		<th class='sortable' onclick='sortBy("smn_tasa_rf","query-smnmovimientodetalle.sql")'>${lbl:b_rate}</th>
+		<th class='sortable' onclick='sortBy("dmo_fecha_registro","query-smnmovimientodetalle.sql")'>${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_movimiento_detalle_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_movimiento_detalle_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_movimiento_detalle_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_concepto_id}</td>
+		<td>${fld:dmo_tipo_movimiento}</td>
+		<td align='right'>${fld:dmo_monto_ml@##,###,###,##0.00}</td>
+		<td align='right'>${fld:dmo_monto_ma@##,###,###,##0.00}</td>
+		<td>${fld:smn_tasa_rf}</td>
+		<td>${fld:dmo_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

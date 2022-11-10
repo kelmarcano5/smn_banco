@@ -1,0 +1,63 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="12" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th>CN</th>
+		<th class='sortable' onclick='sortBy("pmd_fecha","query-smnplantillamovimientobancariodet.sql")'>${lbl:s_loginhist_col1}</th>
+		<th class='sortable' onclick='sortBy("pmd_numero_referencia_bancaria","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_bank_reference_number}</th>
+		<th class='sortable' onclick='sortBy("smn_equivalencia_doc_bancario_id","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_bank_equivalence}</th>
+		<th class='sortable' onclick='sortBy("smn_tipo_documento_id","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_document_type}</th>
+		<th class='sortable' onclick='sortBy("cliente","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_customer}</th>
+		<th class='sortable' onclick='sortBy("pmd_descripcion","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("pmd_monto","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_amount}</th>
+		<th class='sortable' onclick='sortBy("pmd_estatus","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("pmd_fecha_registro","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_plantilla_movimiento_bancario_det_id}')" title="${lbl:b_view_detail}"></td>
+		<!-- <td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_plantilla_movimiento_bancario_det_id}')" title="${lbl:b_delete_button}"></td> -->
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_plantilla_movimiento_bancario_det_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png" onclick="showEditor2('${fld:smn_plantilla_movimiento_bancario_det_id}','${fld:status}','${fld:smn_entidad_rf}','${fld:smn_sucursal_rf}','${fld:smn_entidad_financiera_id}','${fld:smn_cuenta_bancaria_rf}','${fld:pmd_monto}', '${fld:smn_equivalencia_doc_bancario_id}')" title="Conciliacion Manual"></td>
+		
+		<td>${fld:pmd_fecha@dd-MM-yyyy}</td>
+		<td>${fld:pmd_numero_referencia_bancaria}</td>
+		<td>${fld:smn_equivalencia_doc_bancario_desc}</td>
+		<td>${fld:smn_tipo_documento_id}</td>
+		<td>${fld:cliente}</td>
+		<td align='left'>${fld:pmd_descripcion}</td>
+		<td align='right'>${fld:pmd_monto@#,###,##0.00}</td>
+		<td align='left'>${fld:pmd_estatus}</td>
+		<td>${fld:pmd_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

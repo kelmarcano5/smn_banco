@@ -1,0 +1,6 @@
+SELECT DISTINCT
+smn_base.smn_entidades_financieras.smn_entidades_financieras_id as id,
+smn_base.smn_entidades_financieras.efi_codigo||'-'||smn_base.smn_entidades_financieras.efi_nombre as item 
+from smn_base.smn_entidades_financieras 
+inner join smn_base.smn_cuentas_bancarias on smn_base.smn_cuentas_bancarias.cba_entidades_financieras=smn_base.smn_entidades_financieras.smn_entidades_financieras_id
+where smn_base.smn_cuentas_bancarias.smn_entidad_rf=${fld:id}

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='tcr_codigo' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='tcr_codigo' rule='like' />
+	<parameter id='tcr_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='64'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='tcr_descripcion' rule='like' />
+	<parameter id='tcr_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='tcr_estatus' rule='like' />
+	<parameter id='tcr_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date}@{${def:date}} mayor o igual que] no puede ser mayor que [${lbl:b_store_date}@{${def:date}} menor o igual que].' date1='tcr_fecha_registro_ini' date2='tcr_fecha_registro_fin' id='tcr_fecha_registro_ini' />
+	<parameter id='tcr_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

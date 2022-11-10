@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_documento_general_rf' type='integer' required='true' label='${lbl:b_general_documet}' maxlen='10'/>
+	<parameter id='smn_tipo_documento_id' type='integer' required='true' label='${lbl:b_document_type}' maxlen='10'/>
+	<parameter id='doc_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='doc_descripcion' type='varchar' required='true' label='${lbl:b_description} ' maxlen='64'/>
+	<parameter id='doc_tipo_movimiento' type='varchar' required='true' label='${lbl:b_movement_type}' maxlen='2'/>
+	<parameter id='doc_maneja_moneda_alterna' type='varchar' required='true' label='${lbl:b_alternate_currency}' maxlen='2'/>
+	<parameter id='doc_transferencia' type='varchar' required='true' label='${lbl:b_transfer}' maxlen='2'/>
+	<parameter id='smn_documento_origen_id' type='integer' required='false' label='${lbl:b_origen_document}' maxlen='10'/>
+	<parameter id='smn_documento_destino_id' type='integer' required='false' label='${lbl:b_destiny_document}' maxlen='10'/>
+	<parameter id='smn_forma_pago_id' type='integer' required='true' label='${lbl:b_way_to_pay}' maxlen='10'/>
+	<parameter id='doc_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='doc_vigencia' type='date' required='true' label='${lbl:b_validation_date}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='doc_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='doc_descripcion'/>
+
+
+</validator>

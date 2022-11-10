@@ -1,0 +1,1 @@
+select smn_concepto_id as id, con_codigo||' - '||con_descripcion as item from smn_banco.smn_concepto order by smn_concepto_id

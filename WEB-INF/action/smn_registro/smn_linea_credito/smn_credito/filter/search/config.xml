@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Ejecutar consulta y enrutar dependiendo de que un recordset
+		tenga o no registros
+	</summary>
+
+	<log>false</log>
+
+	<!--configura el control de paginacion-->
+	<set-request-attribute id="paging.recordset" value="query-smncredito.sql" />
+	<set-request-attribute id="paging.pagesize" value="10" />
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>smn_documento_id</colname>
+			<colname>cre_numero_documento</colname>
+			<colname>cre_fecha_solicitud</colname>
+			<colname>cre_fecha_otorgamiento</colname>
+			<colname>cre_tasa_interes</colname>
+			<colname>cre_meses_credito</colname>
+			<colname>cre_monto_credito_ml</colname>
+			<colname>cre_estatus_financiero</colname>
+			<colname>cre_estatus_proceso</colname>
+			<colname>cre_fecha_registro</colname>
+		
+		</cols>
+		<table>smn_banco.smn_credito</table>
+		<oper>CONSULTA</oper>
+		<area>Consulta</area>
+		<!-- 
+ 			para auditoria de consulta permite obtener la cantidad de registro obtenidos
+ 			de la busqueda (opcional)
+ 		-->
+		<recordCount recordset="query-smncredito.sql"/>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableSearch</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+	</transaction>
+	
+	<searchCols>smn_documento_id;cre_numero_documento;cre_fecha_solicitud;cre_fecha_otorgamiento;cre_tasa_interes;cre_meses_credito;cre_monto_credito_ml;cre_estatus_financiero;cre_estatus_proceso;cre_fecha_registro;</searchCols>
+
+	<on-exit return-code="0" forward-to="/action/initview" />
+	<on-exit return-code="1" forward-to="${def:actionroot}/notfound" />
+
+</config>

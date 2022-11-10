@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Ejecutar consulta y enrutar dependiendo de que un recordset
+		tenga o no registros
+	</summary>
+
+	<log>false</log>
+
+	<!--configura el control de paginacion-->
+	<set-request-attribute id="paging.recordset" value="query-smnplantillamovimientobancario.sql" />
+	<set-request-attribute id="paging.pagesize" value="10" />
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>smn_entidad_rf</colname>
+			<colname>smn_sucursal_rf</colname>
+			<colname>smn_banco_rf</colname>
+			<colname>smn_cuenta_bancaria_rf</colname>
+			<colname>pmb_fecha_movimiento</colname>
+			<colname>pmb_estatus</colname>
+			<colname>pmb_fecha_registro</colname>
+		
+		</cols>
+		<table>smn_banco.smn_plantilla_movimiento_bancario</table>
+		<oper>CONSULTA</oper>
+		<area>Consulta</area>
+		<!-- 
+ 			para auditoria de consulta permite obtener la cantidad de registro obtenidos
+ 			de la busqueda (opcional)
+ 		-->
+		<recordCount recordset="query-smnplantillamovimientobancario.sql"/>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableSearch</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+	</transaction>
+	
+	<searchCols>smn_entidad_rf;smn_sucursal_rf;smn_banco_rf;smn_cuenta_bancaria_rf;pmb_fecha_movimiento;pmb_estatus;pmb_fecha_registro;</searchCols>
+
+	<on-exit return-code="0" forward-to="/action/initview" />
+	<on-exit return-code="1" forward-to="${def:actionroot}/notfound" />
+
+</config>

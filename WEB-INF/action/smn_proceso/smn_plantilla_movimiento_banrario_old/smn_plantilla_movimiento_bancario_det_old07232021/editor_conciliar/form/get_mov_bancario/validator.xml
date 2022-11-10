@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax">
+	<parameter id="smn_entidades_rf" type="integer" required="false" label="ID Entidad"/>
+	<parameter id="smn_sucursal_rf" type="integer" required="false" label="ID Sucursal"/>
+	<parameter id="smn_entidad_financiera_id" type="integer" required="false" label="ID banco"/>
+	<parameter id="smn_cuenta_bancaria_rf" type="integer" required="false" label="ID Cta Bancaria"/>
+
+	<parameter id="smn_movimiento_bancario_id" type="integer" required="false" label="ID Cta Bancaria" maxlen='10'/>
+	<parameter id="mov_descripcion_movimiento" type="varchar" required="false" label="ID Cta Bancaria" maxlen='100'/>
+	<parameter id="mov_monto_ml" type="double" required="false" label="Monto mov. Bancario" maxlen='30'/>
+	<parameter id="pmd_monto" type="double" required="false" label="Monto plantilla" maxlen='30'/>
+	
+</validator>

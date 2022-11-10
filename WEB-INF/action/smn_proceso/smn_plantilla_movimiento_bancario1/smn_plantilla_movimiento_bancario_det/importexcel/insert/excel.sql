@@ -1,0 +1,38 @@
+INSERT INTO smn_banco.smn_plantilla_movimiento_bancario_det
+(
+	smn_plantilla_movimiento_bancario_det,
+	smn_plantilla_movimiento_bancario_id,
+	pmd_fecha,
+	pmd_numero_referencia_bancaria,
+	smn_equivalencia_doc_bancario_id,
+	smn_tipo_documento_id,
+	pmd_descripcion,
+	pmd_monto,
+	smn_tasa_rf,
+	smn_moneda_rf,
+	pmd_monto_ma,
+	pmd_estatus,
+	pmd_idioma,
+	pmd_usuario,
+	pmd_fecha_registro,
+	pmd_hora
+)
+VALUES
+(
+	${seq:nextval@smn_banco.seq_smn_plantilla_movimiento_bancario_det},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?
+)

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_linea_credito_id' type='integer' required='true' label='${lbl:b_credit_line}' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='cre_numero_documento' type='integer' required='true' label='${lbl:b_document_number}' maxlen='10'/>
+	<!-- <parameter id='cre_tipo_credito_id' type='varchar' required='true' label='${lbl:b_credit_type}' maxlen='2'/> -->
+	<parameter id='cre_fecha_solicitud' type='date' required='true' label='${lbl:b_request_date}' maxlen='10'/>
+	<parameter id='cre_fecha_esperada_aprobacion' type='date' required='true' label='${lbl:b_expected_date_aprob}' maxlen='10'/>
+	<!-- <parameter id='cre_fecha_otorgamiento' type='date' required='false' label='${lbl:b_grant_date}' maxlen='10'/>
+	<parameter id='cre_fecha_primera_cuota' type='date' required='false' label='${lbl:b_first_fee_date}' maxlen='10'/>
+	<parameter id='cre_fecha_ultima_cuota' type='date' required='false' label='${lbl:b_last_fee_date}' maxlen='10'/>
+	<parameter id='cre_tasa_interes' type='double' required='false' label='${lbl:b_interest_rate}' maxlen='10'/>
+	<parameter id='cre_meses_credito' type='double' required='false' label='${lbl:b_credit_months}' maxlen='10'/>
+	<parameter id='cre_cantidad_cuotas' type='double' required='false' label='${lbl:b_amount_odds}' maxlen='10'/> -->
+	<parameter id='cre_monto_solicitado_ml' type='double' required='true' label='${lbl:b_amount_requested_ml}' maxlen='10'/>
+	<parameter id='cre_monto_credito_ml' type='double' required='true' label='${lbl:b_amount_credit_ml}' maxlen='10'/>
+	<!-- <parameter id='smn_moneda_rf' type='integer' required='false' label='${lbl:b_coin}' maxlen='10'/>
+	<parameter id='smn_tasa_rf' type='integer' required='false' label='${lbl:b_rate}' maxlen='10'/>
+	<parameter id='cre_monto_intereses_ml' type='double' required='false' label='${lbl:b_amount_interest_ml}' maxlen='10'/>
+	<parameter id='cre_monto_comision_ml' type='double' required='false' label='${lbl:b_amount_commission_ml}' maxlen='10'/>  -->
+	<!-- <parameter id='cre_monto_solicitado_ma' type='double' required='false' label='${lbl:b_amount_requested_ma}' maxlen='10'/> -->
+	<!-- <parameter id='cre_monto_credito_ma' type='double' required='false' label='${lbl:b_amount_credit_ma}' maxlen='10'/>
+	<parameter id='cre_monto_intereses_ma' type='double' required='false' label='${lbl:b_amount_interest_ma}' maxlen='10'/>
+	<parameter id='cre_monto_comision_ma' type='double' required='false' label='${lbl:b_amount_commission_ma}' maxlen='10'/>
+	<parameter id='cre_estatus_financiero' type='varchar' required='true' label='${lbl:b_financiero_status}' maxlen='2'/>
+	<parameter id='cre_estatus_proceso' type='varchar' required='true' label='${lbl:b_process_status}' maxlen='2'/> -->
+	<!-- <parameter id='cre_fecha_registro' type='date' required='true' label='${lbl:b_store_date}' maxlen='10'/> -->
+
+
+</validator>

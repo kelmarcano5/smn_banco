@@ -1,0 +1,1 @@
+select smn_cuentas_bancarias_id as id, cba_codigo||' - '||cba_nombre as item from smn_base.smn_cuentas_bancarias order by smn_cuentas_bancarias_id

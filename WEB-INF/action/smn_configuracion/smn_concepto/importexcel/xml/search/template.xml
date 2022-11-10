@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_concepto>
+	<detail>
+		<rows>		
+		<record con_fecha_registro="${fld:con_fecha_registro}"    con_vigencia="${fld:con_vigencia}"    con_estatus="${fld:con_estatus}"    con_campo="${fld:con_campo}"    con_tabla="${fld:con_tabla}"    con_descripcion="${fld:con_descripcion}"    con_codigo="${fld:con_codigo}"    />
+		</rows>
+	</detail>
+</smn_concepto>

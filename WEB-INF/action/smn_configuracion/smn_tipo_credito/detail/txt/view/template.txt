@@ -1,0 +1,3 @@
+<rows>
+tcr_fecha_registro="${fld:tcr_fecha_registro}"    tcr_vigencia="${fld:tcr_vigencia}"    tcr_estatus="${fld:tcr_estatus}"    tcr_metodo_calculo="${fld:tcr_metodo_calculo}"    tcr_descripcion="${fld:tcr_descripcion}"    tcr_codigo="${fld:tcr_codigo}"    
+</rows>

@@ -1,0 +1,1 @@
+select smn_documentos_generales_id as id, dcg_codigo||' - '||dcg_descripcion as item from smn_base.smn_documentos_generales order by smn_documentos_generales_id
