@@ -1,4 +1,4 @@
-package domain.repgen.smn_configuracion.smn_conexiones;
+package domain.repgen.smn_configuracion.smn_sistema.smn_conexiones;
 
 import java.io.ByteArrayOutputStream;
 import javax.servlet.ServletContext;

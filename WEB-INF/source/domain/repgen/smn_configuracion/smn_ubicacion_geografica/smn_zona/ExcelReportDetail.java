@@ -1,4 +1,4 @@
-package domain.repgen.smn_configuracion.smn_zona;
+package domain.repgen.smn_configuracion.smn_ubicacion_geografica.smn_zona;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;

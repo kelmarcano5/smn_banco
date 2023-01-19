@@ -68,7 +68,7 @@
 		//envio de emails
 		function openEmails() {
 			var uri = "${def:context}${def:actionroot}/email/form";					
-			openDialog("editor0", uri, 950, 600);	
+			openDialog("editor0", uri, wdt, hgt);	
 		}
 		
 		//mostrar el detalle de un registro
@@ -77,7 +77,7 @@
 //			//alert('Colocar su c�digo aqu�.')
 			
 			var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
-			openDialog("dialog", uri, 650, 390);			
+			openDialog("dialog", uri, wdt, hgt);			
 		}
 		
 		//muestra un DIV+IFRAME con el formulario de CRUD
@@ -89,22 +89,22 @@
 			if (id == 'editor')
 			{					
 				var uri = "${def:context}${def:actionroot}/editor/form";					
-				openDialog("editor1", uri, 650, 390);					
+				openDialog("editor1", uri, wdt, hgt);					
 			}
 			else if (id == 'filter')
 			{
 				var uri = "${def:context}${def:actionroot}/filter/form";					
-				openDialog("editor2", uri, 950, 600);		
+				openDialog("editor2", uri, wdt, hgt);		
 			} 
 			else if (id == 'importexcel')
 			{
 				var uri = "${def:context}${def:actionroot}/importexcel/form";					
-				openDialog("editor3", uri, 950, 600);		
+				openDialog("editor3", uri, wdt, hgt);		
 			} 
 			else if (id == 'repgen')
 			{
 				var uri = "${def:context}${def:actionroot}/repgen/form";		
-				openDialog("editor4", uri, 950, 600);		
+				openDialog("editor4", uri, wdt, hgt);		
 			}
 			//editor a nivel de registros
 			else {				
@@ -114,7 +114,7 @@
 				else
 					uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
 					
-				openDialog("editor5", uri, 650, 390);
+				openDialog("editor5", uri, wdt, hgt);
 			}
 			
 		}
@@ -141,7 +141,7 @@
                  
                 if(st=='Generado' || st=='En Conciliacion'){
                     uri = "${def:context}${def:actionroot}/conciliar?plantilla_id="+id;
-                    openDialog("dialog",uri,300,260);
+                    openDialog("dialog",uri,wdt,hgt);
                 }else{
                     alertBox('Status invalido para conciliar.', '${lbl:b_continue_button}')
                 }
@@ -152,7 +152,7 @@
                  
                 if(st=='En Conciliacion'){
                     uri = "${def:context}${def:actionroot}/cerrar?plantilla_id="+id;
-                    openDialog("dialog",uri,1300,700);
+                    openDialog("dialog",uri,wdt,hgt);
                 }else{
                     alertBox('Status invalido para cerrar.', '${lbl:b_continue_button}')
                 }
@@ -163,7 +163,7 @@
 		function relacion(id2, ent, suc, ban, cta) {
 			uri = "${def:context}${def:actionroot}/smn_plantilla_movimiento_bancario_det/form?id2="+ id2+"&smn_entidades_rf="+ent+"&smn_sucursal_rf="+suc+"&smn_entidad_financiera_id="+ban+"&smn_cuenta_bancaria_rf="+cta;
 			
-			openDialog("dialog", uri, 1300, 700);
+			openDialog("dialog", uri, wdt, hgt);
 		}
 
 	</script>

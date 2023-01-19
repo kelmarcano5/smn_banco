@@ -1,4 +1,4 @@
-package domain.repgen.smn_configuracion.smn_zona;
+package domain.repgen.smn_configuracion.smn_ubicacion_geografica.smn_zona;
 
 import java.io.ByteArrayOutputStream;
 import javax.servlet.ServletContext;
@@ -163,8 +163,8 @@ public class PDFReport extends AbstractPDFOutput
 		d = rs.getString("zon_fecha_registro_fin");
 			if (d != null)
 			{
-			name  = "b_store_date}@{\${def:date}";
-			label = "${lbl:b_store_date}@{\${def:date}}";
+			name  = "b_store_date}@{${def:date}";
+			label = "${lbl:b_store_date}@{${def:date}}";
 			str_filter = StringUtil.replace(label, label, _labels.getLabel(name, _language));
 
 			//filter field
@@ -199,8 +199,8 @@ public class PDFReport extends AbstractPDFOutput
 		d = rs.getString("zon_fecha_registro_ini");
 			if (d != null)
 			{
-			name  = "b_store_date}@{\${def:date}";
-			label = "${lbl:b_store_date}@{\${def:date}}";
+			name  = "b_store_date}@{${def:date}";
+			label = "${lbl:b_store_date}@{${def:date}}";
 			str_filter = StringUtil.replace(label, label, _labels.getLabel(name, _language));
 
 			//filter field

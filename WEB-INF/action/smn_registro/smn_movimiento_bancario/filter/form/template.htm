@@ -97,6 +97,7 @@
 				<option value="RE">${lbl:b_registered}</option>
 				<option value="GE">${lbl:b_generated}</option>
 				<option value="CO">${lbl:b_posted}</option>
+				<option value="DI">Disponible</option>
 			</select> 
 		</td>
 	</tr>
@@ -366,6 +367,12 @@
 							onErrorFn=null);				
 		}
 	}
+
+    function relacion(id2) {
+
+			uri = "${def:context}${def:actionroot}../../smn_movimiento_detalle/form?id2="+ id2;
+			openDialog("dialog", uri, wdt, hgt);
+		}
 			
 </script>
 

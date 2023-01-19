@@ -1,4 +1,4 @@
-package domain.repgen.smn_configuración.smn_tipo_credito;
+package domain.repgen.smn_configuracion.smn_tipo_credito;
 
 import javax.servlet.ServletContext;
 

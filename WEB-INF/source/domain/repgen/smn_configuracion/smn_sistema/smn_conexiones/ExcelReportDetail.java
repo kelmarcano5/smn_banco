@@ -1,4 +1,4 @@
-package domain.repgen.smn_configuracion.smn_conexiones;
+package domain.repgen.smn_configuracion.smn_sistema.smn_conexiones;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;

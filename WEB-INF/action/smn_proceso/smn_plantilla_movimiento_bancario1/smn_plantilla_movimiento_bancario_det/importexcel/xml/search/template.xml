@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<smn_plantilla_movimiento_bancario_det>
-	<detail>
-		<rows>		
-		<record pmd_fecha_registro="${fld:pmd_fecha_registro}"    pmd_estatus="${fld:pmd_estatus}"    pmd_monto_ma="${fld:pmd_monto_ma}"    smn_moneda_rf="${fld:smn_moneda_rf}"    smn_tasa_rf="${fld:smn_tasa_rf}"    pmd_monto="${fld:pmd_monto}"    pmd_descripcion="${fld:pmd_descripcion}"    smn_tipo_documento_id="${fld:smn_tipo_documento_id}"    smn_equivalencia_doc_bancario_id="${fld:smn_equivalencia_doc_bancario_id}"    pmd_numero_referencia_bancaria="${fld:pmd_numero_referencia_bancaria}"    pmd_fecha="${fld:pmd_fecha}"    smn_plantilla_movimiento_bancario_id="${fld:smn_plantilla_movimiento_bancario_id}"    smn_plantilla_movimiento_bancario_det="${fld:smn_plantilla_movimiento_bancario_det}"    />
-		</rows>
-	</detail>
-</smn_plantilla_movimiento_bancario_det>
