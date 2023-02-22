@@ -126,12 +126,12 @@
 <script type="text/javascript">
 
 	//inicializacion de la pagina cuando carga
+    var idMovimientoCabecera = "${fld:cabecera_id}";
 	onload = function()
-	{ 
+	{  
+        console.log(idMovimientoCabecera);
 		showFilter();
-		document.form1.pmd_fecha_registro_ini.onkeypress = keypressDate;
-	document.form1.pmd_fecha_registro_fin.onkeypress = keypressDate;
-
+    
 		search();
 	} 
 	
@@ -147,11 +147,11 @@
 	//ejecutar consulta
 	function search()
 	{
-		var url = "${def:actionroot}/search";
+		var url = "${def:actionroot}/search?cabecera_id=${fld:cabecera_id}";
 		
 		//determina si refresca y se para en la pagina actual o en la pagina 1
 		if (currentPage > 0)
-			url = "${def:actionroot}/search?currentpage=" + currentPage;
+			url = "${def:actionroot}/search?cabecera_id=${fld:cabecera_id}&currentpage=" + currentPage;
 
 		//definir funcion goBack()
 		_goBackFn = showFilter;

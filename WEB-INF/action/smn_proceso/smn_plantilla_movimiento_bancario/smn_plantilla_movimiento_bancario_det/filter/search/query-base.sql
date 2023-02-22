@@ -18,7 +18,8 @@ from
 	inner join smn_banco.smn_equivalencia_doc_bancario on smn_banco.smn_equivalencia_doc_bancario.smn_equivalencia_doc_bancario_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_equivalencia_doc_bancario_id
 	inner join smn_banco.smn_tipo_documento on smn_banco.smn_tipo_documento.smn_tipo_documento_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_tipo_documento_id
 where
-	smn_plantilla_movimiento_bancario_det is not null
+	smn_banco.smn_plantilla_movimiento_bancario_det.smn_plantilla_movimiento_bancario_id is not null
+    and smn_banco.smn_plantilla_movimiento_bancario_det.smn_plantilla_movimiento_bancario_id = ${fld:cabecera_id}
 	${filter}
 order by
 	smn_plantilla_movimiento_bancario_det

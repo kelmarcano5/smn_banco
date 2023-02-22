@@ -1,1 +1,0 @@
-select smn_documento_id as id, doc_codigo || ' - ' || doc_descripcion as item from smn_banco.smn_documento order by smn_documento_id
