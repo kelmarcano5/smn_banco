@@ -90,13 +90,24 @@
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_status}*</td>
+		<td>${lbl:b_status} del proceso*</td>
+		<td>
+			<select name="mov_estatus_proceso" id="mov_estatus_proceso">
+				<option value="">[Cualquiera]</option>
+				<option value="DI">Disponible</option>
+				<option value="CN">Conciliado</option>
+				<option value="NC">No Conciliado</option>
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_status} del registro*</td>
 		<td>
 			<select name="mov_estatus" id="mov_estatus">
 				<option value="">[Cualquiera]</option>
-				<option value="RE">${lbl:b_registered}</option>
-				<option value="GE">${lbl:b_generated}</option>
-				<option value="CO">${lbl:b_posted}</option>
+				<option value="GE">Generado</option>
+				<option value="RE">Registrado</option>
+				<option value="CO">Contabilizaod</option>
 			</select> 
 		</td>
 	</tr>
@@ -134,8 +145,7 @@
 	onload = function()
 	{ 
 		showFilter();
-		document.form1.mov_fecha_registro_ini.onkeypress = keypressDate;
-	document.form1.mov_fecha_registro_fin.onkeypress = keypressDate;
+		
 
 		search();
 	} 
@@ -223,7 +233,7 @@
 	//envio de emails
 	function openEmails() {
 		var uri = "${def:context}${def:actionroot}/email/form";					
-		openDialog("editor0", uri, 950, 600);	
+		openDialog("editor0", uri, wdt, hgt);	
 	}
 	
 	//mostrar el detalle de un registro
@@ -232,7 +242,7 @@
 //		//alert('Colocar su c�digo aqu�.')
 		
 		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
-		openDialog("dialog", uri, 650, 600);
+		openDialog("dialog", uri, wdt, hgt);
 		
 	}
 	
@@ -247,7 +257,7 @@
 		else
 			uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
 			
-		openDialog("editor", uri, 650, 600);
+		openDialog("editor", uri, wdt, hgt);
 		
 	}
 			

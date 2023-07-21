@@ -20,7 +20,11 @@ public class conciliacionBancariaDet extends GenericTransaction{
 	 * @see dinamica.GenericTransaction#service(dinamica.Recordset)
 	 */
 
+<<<<<<< HEAD
 	static File newTextFile = new File("C:/log/log.txt");
+=======
+	static File newTextFile = new File("./log.txt");
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 	//static File newTextFile = new File("./log.txt");
 
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -64,7 +68,12 @@ public class conciliacionBancariaDet extends GenericTransaction{
 			if(plantilladet.getRecordCount() > 0){
 				while (plantilladet.next()){
 						
+<<<<<<< HEAD
 								
+=======
+					String det_id = plantilladet.getString("det_id");
+					int det_id_int = Integer.parseInt(det_id);
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 					String entidad_rf = plantilladet.getString("entidad_rf");
 					int entidad_rf_int = Integer.parseInt(entidad_rf);
 					inputParams.setValue("entidad_rf", entidad_rf_int);
@@ -74,6 +83,14 @@ public class conciliacionBancariaDet extends GenericTransaction{
 					String banco_rf = plantilladet.getString("banco_rf");
 					int banco_rf_int = Integer.parseInt(banco_rf);
 					inputParams.setValue("banco_rf", banco_rf_int);
+<<<<<<< HEAD
+=======
+					
+					String moneda_rf = plantilladet.getString("smn_moneda_rf");
+					int moneda_rf_int = Integer.parseInt(moneda_rf);
+					inputParams.setValue("moneda_rf", moneda_rf_int);
+					
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 					String cuenta_bancaria_rf = plantilladet.getString("cuenta_bancaria_rf");
 					int cuenta_bancaria_rf_int = Integer.parseInt(cuenta_bancaria_rf);
 					inputParams.setValue("cuenta_bancaria_rf", cuenta_bancaria_rf_int);
@@ -97,9 +114,26 @@ public class conciliacionBancariaDet extends GenericTransaction{
 					Double monto_ml_ban_dou = Double.parseDouble(monto_ml_ban);
 					inputParams.setValue("monto_ml_ban", monto_ml_ban_dou);
 					
+<<<<<<< HEAD
 					String tipo_doc = plantilladet.getString("tipo_doc");
 					inputParams.setValue("tipo_doc", tipo_doc);
 					int det_id_int2=0;
+=======
+					String monto_ma = plantilladet.getString("monto_ma");
+					Double monto_ma_dou = Double.parseDouble(monto_ma);
+					inputParams.setValue("monto_ma", monto_ma_dou);
+					
+					String tipo_doc = plantilladet.getString("tipo_doc");
+					inputParams.setValue("tipo_doc", tipo_doc);
+					
+					String smn_formas_pago_rf = plantilladet.getString("smn_formas_pago_rf");
+					int smn_formas_pago_rf_int = Integer.parseInt(smn_formas_pago_rf);
+					inputParams.setValue("smn_formas_pago_rf", smn_formas_pago_rf_int);
+					String doc_es_cobranza = plantilladet.getString("doc_es_cobranza");
+					inputParams.setValue("doc_es_cobranza", doc_es_cobranza);
+					
+					
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 					// VERIFICAR SI EXISTE UNA TRANSACCION BANCARIA IGUAL PERO CON SIGNO CONTRARIO
 					String getplantilla_det_igual = getSQL(getResource("query-getplantilla_det_igual.sql"), inputParams);
 					Recordset plantilladetigual = db.get(getplantilla_det_igual);
@@ -109,7 +143,11 @@ public class conciliacionBancariaDet extends GenericTransaction{
 
 						while (plantilladetigual.next()){
 							String det_id2 = plantilladetigual.getString("det_id2");
+<<<<<<< HEAD
 							det_id_int2 = Integer.parseInt(det_id2);
+=======
+							int det_id_int2 = Integer.parseInt(det_id2);
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 							inputParams.setValue("detalle_id2", det_id_int2);
 
 							String update_det_iguales = getSQL(getResource("query-update_detalles_iguales.sql"), inputParams);
@@ -125,17 +163,36 @@ public class conciliacionBancariaDet extends GenericTransaction{
 					Recordset rsmovban = db.get(getmovban);
 					if(rsmovban.getRecordCount() > 0){
 						while (rsmovban.next()){
+<<<<<<< HEAD
 										
+=======
+										String modulo = rsmovban.getString("modulo");
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 										String mov_id = rsmovban.getString("mov_id");
 										int mov_id_int = Integer.parseInt(mov_id);
 										inputParams.setValue("mov_id", mov_id_int);
 										rsmovban.setValue("mov_id", mov_id_int);
+<<<<<<< HEAD
 										rsmovban.setValue("detalle_id", det_id_int2);
+=======
+										rsmovban.setValue("detalle_id", det_id_int);
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 										
 										// SE ACTUALIZAN LOS STATUS DE LAS DOS TABLAS A CONCILIADAS CN
 										String updatereg = getSQL(getResource("query-update.sql"), rsmovban);
 
 										db.exec(updatereg);
+<<<<<<< HEAD
+=======
+										// PROCESO QUE ACTUALIZA RELACION DE COBRANZA
+										if(doc_es_cobranza.contains("S")){
+											
+											String updrelcob = getSQL(getResource("query-update_relacion_cobranza.sql"), rsmovban);
+
+											db.exec(updrelcob);
+											
+										}
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 										
 										//------------------------------
 										// PROCESAR DISPONIBILIDAD
@@ -233,11 +290,18 @@ public class conciliacionBancariaDet extends GenericTransaction{
 										
 										
 									
+<<<<<<< HEAD
 								}
 										//-----------------------------
 
 									//}
 				//}
+=======
+										
+										//-----------------------------
+
+									}
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 						}else{
 									mensaje = "LINEA 140";
 									fw.write("Mensaje " + mensaje +  "\n");
@@ -250,11 +314,19 @@ public class conciliacionBancariaDet extends GenericTransaction{
 									String update_det_iguales = getSQL(getResource("query-update_det_no_conciliado.sql"), inputParams);
 
 									db.exec(update_det_iguales);
+<<<<<<< HEAD
 								//}
 
 							}
 						}
 			}
+=======
+								}
+
+							}
+						}
+
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 
 			fw.write("Mensaje " + mensaje +  "\n");
 			mensaje = "FINAL DE PROCESO";

@@ -64,7 +64,7 @@
 		//envio de emails
 		function openEmails() {
 			var uri = "${def:context}${def:actionroot}/email/form";					
-			openDialog("editor0", uri, 950, 600);	
+			openDialog("editor0", uri, wdt, hgt);	
 		}
 		
 		//mostrar el detalle de un registro
@@ -73,7 +73,7 @@
 //			//alert('Colocar su c�digo aqu�.')
 			
 			var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
-			openDialog("dialog", uri, 650, 600);			
+			openDialog("dialog", uri, wdt, hgt);			
 		}
 		
 		//muestra un DIV+IFRAME con el formulario de CRUD
@@ -85,22 +85,22 @@
 			if (id == 'editor')
 			{					
 				var uri = "${def:context}${def:actionroot}/editor/form?id2=${fld:id2}";					
-				openDialog("editor1", uri, 650, 600);					
+				openDialog("editor1", uri, wdt, hgt);					
 			}
 			else if (id == 'filter')
 			{
 				var uri = "${def:context}${def:actionroot}/filter/form";					
-				openDialog("editor2", uri, 950, 600);		
+				openDialog("editor2", uri, wdt, hgt);		
 			} 
 			else if (id == 'importexcel')
 			{
 				var uri = "${def:context}${def:actionroot}/importexcel/form";					
-				openDialog("editor3", uri, 950, 600);		
+				openDialog("editor3", uri, wdt, hgt);		
 			} 
 			else if (id == 'repgen')
 			{
 				var uri = "${def:context}${def:actionroot}/repgen/form";		
-				openDialog("editor4", uri, 950, 600);		
+				openDialog("editor4", uri, wdt, hgt);		
 			}
 			//editor a nivel de registros
 			else {				
@@ -111,7 +111,7 @@
 					
 					uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
 					
-				openDialog("editor5", uri, 650, 600);
+				openDialog("editor5", uri, wdt, hgt);
 			}
 			
 		}
@@ -139,7 +139,7 @@
 			uri = "${def:context}${def:actionroot}/smn_movimiento_detalle/form?id2="+ id2;
 
 			//alert(uri);
-			openDialog("dialog", uri, 1300, 700);
+			openDialog("dialog", uri, wdt, hgt);
 		}
 		
 		function changeStatus(id3) {
@@ -157,7 +157,7 @@
 			//alert(id3);
 			if(st=='DI' || st=='NC'){
                     uri = "${def:context}${def:actionroot}/conciliarmov?movimiento_bancario_id="+id3;
-                    openDialog("dialog",uri,300,260);
+                    openDialog("dialog",uri,wdt,hgt);
                 }else{
                     alertBox('Status invalido para conciliar.', '${lbl:b_continue_button}')
                 }

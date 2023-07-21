@@ -21,6 +21,7 @@ from
 	left join smn_base.smn_sucursales on smn_base.smn_sucursales.smn_sucursales_id = smn_banco.smn_plantilla_movimiento_bancario.smn_sucursal_rf
 	inner join smn_base.smn_entidades_financieras on smn_base.smn_entidades_financieras.smn_entidades_financieras_id = smn_banco.smn_plantilla_movimiento_bancario.smn_banco_rf
 	inner join smn_base.smn_cuentas_bancarias on smn_base.smn_cuentas_bancarias.smn_cuentas_bancarias_id = smn_banco.smn_plantilla_movimiento_bancario.smn_cuenta_bancaria_rf
+    
 where
 	smn_plantilla_movimiento_bancario is not null
 	${filter}

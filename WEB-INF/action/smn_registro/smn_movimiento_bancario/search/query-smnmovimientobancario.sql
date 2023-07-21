@@ -37,6 +37,7 @@ from
 	left outer join smn_banco.smn_documento on smn_banco.smn_documento.smn_documento_id =  smn_banco.smn_movimiento_bancario.smn_documento_id
 	left outer join smn_banco.smn_tipo_documento on smn_banco.smn_tipo_documento.smn_tipo_documento_id =  smn_banco.smn_movimiento_bancario.smn_tipo_documento_id
 	left outer join smn_banco.smn_equivalencia_doc_bancario on smn_banco.smn_equivalencia_doc_bancario.smn_equivalencia_doc_bancario_id = smn_banco.smn_movimiento_bancario.smn_equivalencia_doc_bancario_id
+    where smn_banco.smn_movimiento_bancario.mov_estatus_proceso in ('DI', 'NC')
 order by 
 	mov_fecha_documento desc,
 	smn_entidades_rf,

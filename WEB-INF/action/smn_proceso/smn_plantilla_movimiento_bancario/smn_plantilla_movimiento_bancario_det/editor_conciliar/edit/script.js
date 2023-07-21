@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 var cl = '${fld:smn_cliente_rf}';
 $('#smn_cliente_rf').val(cl).change();
 
 document.form1.smn_plantilla_movimiento_bancario_id.value='${fld:smn_plantilla_movimiento_bancario_id@#,###,###}';
+=======
+document.form1.smn_plantilla_movimiento_bancario_id.value='${fld:smn_plantilla_movimiento_bancario_id@#######}';
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 setComboValue('smn_equivalencia_doc_bancario_id','${fld:smn_equivalencia_doc_bancario_id}','form1');
   	
 document.form1.pmd_fecha.value='${fld:pmd_fecha@dd-MM-yyyy}';

@@ -1,10 +1,17 @@
 select
 	smn_banco.smn_movimiento_bancario.smn_movimiento_bancario_id,
+	smn_banco.smn_movimiento_bancario.mov_monto_ml,
+	smn_banco.smn_movimiento_bancario.mov_monto_ma,
 	case
 	when smn_banco.smn_movimiento_bancario.mov_estatus='RE' then '${lbl:b_registered}'
 	when smn_banco.smn_movimiento_bancario.mov_estatus='GE' then '${lbl:b_generated}'
 	when smn_banco.smn_movimiento_bancario.mov_estatus='CO' then '${lbl:b_posted}'
 	end as mov_estatus,
+    case
+	when smn_banco.smn_movimiento_bancario.mov_estatus_proceso='DI' then 'Disponible'
+	when smn_banco.smn_movimiento_bancario.mov_estatus_proceso='CN' then 'Conciliado'
+	when smn_banco.smn_movimiento_bancario.mov_estatus_proceso='NC' then 'No Conciliado'
+	end as mov_estatus_proceso,
 	smn_base.smn_entidades.ent_codigo||' - '||smn_base.smn_entidades.ent_descripcion_corta as smn_entidades_rf,
 	smn_base.smn_entidades_financieras.efi_codigo||' - '||efi_nombre as smn_entidad_financiera_id,
 	smn_base.smn_cuentas_bancarias.cba_codigo||' - '||smn_base.smn_cuentas_bancarias.cba_nombre as smn_cuenta_bancaria_rf,
@@ -19,7 +26,8 @@ select
 	smn_base.smn_sucursales.suc_codigo||' - '||smn_base.smn_sucursales.suc_nombre as smn_sucursal_rf,
 	smn_base.smn_monedas.mon_codigo||' - '||smn_base.smn_monedas.mon_nombre as smn_moneda_rf,
 	smn_base.smn_tasas_de_cambio.tca_moneda_referencia||' - '||tca_tasa_cambio as smn_tasa_rf,
-	smn_banco.smn_equivalencia_doc_bancario.edb_doc_equiv_bancario||' - '||edb_descrip_bancaria as smn_equivalencia_doc_bancario_id
+	smn_banco.smn_equivalencia_doc_bancario.edb_doc_equiv_bancario||' - '||edb_descrip_bancaria as smn_equivalencia_doc_bancario_id,
+    smn_banco.smn_documento.doc_descripcion as smn_documento_id
 from
 	smn_banco.smn_movimiento_bancario
 	left outer join smn_base.smn_cuentas_bancarias on smn_base.smn_cuentas_bancarias.smn_cuentas_bancarias_id = smn_banco.smn_movimiento_bancario.smn_cuenta_bancaria_rf
@@ -36,7 +44,7 @@ from
 	left outer join smn_base.smn_entidades_financieras on smn_base.smn_entidades_financieras.smn_entidades_financieras_id = smn_banco.smn_movimiento_bancario.smn_entidad_financiera_id
 where
 	smn_movimiento_bancario_id is not null and
-	tcb_naturaleza='CJ' and  mov_estatus_proceso in ('DI', 'NC')
+	tcb_naturaleza='CJ'
 	${filter}
 order by
 	mov_fecha_documento desc,

@@ -20,7 +20,11 @@ public class conciliacionBancaria extends GenericTransaction{
 	 * @see dinamica.GenericTransaction#service(dinamica.Recordset)
 	 */
 
+<<<<<<< HEAD
 	static File newTextFile = new File("C:/log/log.txt");
+=======
+	static File newTextFile = new File("./log.txt");
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 	//static File newTextFile = new File("./log.txt");
 
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -120,6 +124,11 @@ public class conciliacionBancaria extends GenericTransaction{
 								String monto_ml_ban = plantilladet.getString("monto_ml_ban");
 								Double monto_ml_ban_dou = Double.parseDouble(monto_ml_ban);
 								inputParams.setValue("monto_ml_ban", monto_ml_ban_dou);
+<<<<<<< HEAD
+=======
+								
+								
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 								// VERIFICAR SI EXISTE UNA TRANSACCION BANCARIA IGUAL PERO CON SIGNO CONTRARIO
 								
 								String getplantilla_det_igual = getSQL(getResource("query-getplant_detigual.sql"), inputParams);
@@ -187,7 +196,16 @@ public class conciliacionBancaria extends GenericTransaction{
 								
 								fw.write("numero_ref_ban " + numero_ref_ban +  "\n");
 								fw.write("monto_ml_ban_dou " + monto_ml_ban_dou +  "\n");
+<<<<<<< HEAD
 
+=======
+								
+								String smn_formas_pago_rf = plantilladet2.getString("smn_formas_pago_rf");
+								int smn_formas_pago_rf_int = Integer.parseInt(smn_formas_pago_rf);
+								inputParams.setValue("smn_formas_pago_rf", smn_formas_pago_rf_int);
+								String doc_es_cobranza = plantilladet2.getString("doc_es_cobranza");
+								inputParams.setValue("doc_es_cobranza", doc_es_cobranza);
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 
 								// BUSCAR EN MOVIMIENTO BANCARIO TRANSACCION A CONCILIAR
 								String getmovban = getSQL(getResource("query-getmovimiento_ban.sql"), inputParams);
@@ -196,7 +214,11 @@ public class conciliacionBancaria extends GenericTransaction{
 									while (rsmovban.next()){
 										mensaje = "LINEA 169";
 										fw.write("Mensaje " + mensaje +  "\n");
+<<<<<<< HEAD
 
+=======
+										String modulo = rsmovban.getString("modulo");
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 										String mov_id = rsmovban.getString("mov_id");
 										int mov_id_int = Integer.parseInt(mov_id);
 										inputParams.setValue("mov_id", mov_id_int);
@@ -206,6 +228,17 @@ public class conciliacionBancaria extends GenericTransaction{
 										//String updatereg = getSQL(getResource("query-update.sql"), inputParams);
 										String updatereg = getSQL(getResource("query-update.sql"), rsmovban);
 										db.exec(updatereg);
+<<<<<<< HEAD
+=======
+										// PROCESO QUE ACTUALIZA O CREA RELACION DE COBRANZA
+										if(doc_es_cobranza.contains("S")){
+											
+											String updrelcob = getSQL(getResource("query-update_relacion_cobranza.sql"), rsmovban);
+
+											db.exec(updrelcob);
+											
+										}
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 										// PROCESAR DISPONIBILIDAD
 										// LEER SALDO DIA ANTERIOR CUENTA BANCARIA
 										Double sal_anterior=0.00;

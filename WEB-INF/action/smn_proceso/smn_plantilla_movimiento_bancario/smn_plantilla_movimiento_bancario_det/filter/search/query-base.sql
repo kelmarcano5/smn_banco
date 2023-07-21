@@ -19,7 +19,12 @@ select *,
 	smn_base.smn_monedas.mon_codigo ||' - '|| mon_nombre as smn_moneda_rf,
 	smn_base.smn_tasas_de_cambio.tca_moneda_referencia ||' - '|| tca_tasa_cambio as smn_tasa_rf,
 	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_monto_ma,
+<<<<<<< HEAD
 	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_fecha_registro
+=======
+	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_fecha_registro,
+	smn_base.smn_auxiliar.aux_codigo || ' - ' || smn_base.smn_auxiliar.aux_descripcion as cliente
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 from
 	smn_banco.smn_plantilla_movimiento_bancario_det
 	inner join smn_banco.smn_plantilla_movimiento_bancario on smn_banco.smn_plantilla_movimiento_bancario.smn_plantilla_movimiento_bancario_id=smn_banco.smn_plantilla_movimiento_bancario_det.smn_plantilla_movimiento_bancario_id
@@ -27,8 +32,14 @@ from
 	left outer join smn_banco.smn_tipo_documento on smn_banco.smn_tipo_documento.smn_tipo_documento_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_tipo_documento_id
 	left outer join smn_base.smn_monedas on smn_base.smn_monedas.smn_monedas_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_moneda_rf
 	left outer join smn_base.smn_tasas_de_cambio on smn_base.smn_tasas_de_cambio.smn_tasas_de_cambio_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_tasa_rf
+<<<<<<< HEAD
+=======
+	left  join smn_comercial.smn_cliente on smn_comercial.smn_cliente.smn_cliente_id=smn_banco.smn_plantilla_movimiento_bancario_det.smn_cliente_rf  
+	left join smn_base.smn_auxiliar on smn_base.smn_auxiliar.smn_auxiliar_id = smn_comercial.smn_cliente.smn_auxiliar_rf
+>>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 where
-	smn_plantilla_movimiento_bancario_det is not null
+	smn_banco.smn_plantilla_movimiento_bancario_det.smn_plantilla_movimiento_bancario_id is not null
+    and smn_banco.smn_plantilla_movimiento_bancario_det.smn_plantilla_movimiento_bancario_id = ${fld:cabecera_id}
 	${filter}
 order by
 	smn_plantilla_movimiento_bancario_det

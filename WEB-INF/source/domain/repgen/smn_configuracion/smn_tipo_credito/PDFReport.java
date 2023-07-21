@@ -1,4 +1,4 @@
-package domain.repgen.smn_configuración.smn_tipo_credito;
+package domain.repgen.smn_configuracion.smn_tipo_credito;
 
 import java.io.ByteArrayOutputStream;
 import javax.servlet.ServletContext;
@@ -145,8 +145,8 @@ public class PDFReport extends AbstractPDFOutput
 				d = rs.getString("tcr_fecha_registro_fin");
 			if (d != null)
 			{
-			name  = "b_store_date}@{\${def:date}";
-			label = "${lbl:b_store_date}@{\${def:date}}";
+			name  = "b_store_date}@{${def:date}";
+			label = "${lbl:b_store_date}@{${def:date}}";
 			str_filter = StringUtil.replace(label, label, _labels.getLabel(name, _language));
 
 			//filter field
@@ -199,8 +199,8 @@ public class PDFReport extends AbstractPDFOutput
 		d = rs.getString("tcr_fecha_registro_ini");
 			if (d != null)
 			{
-			name  = "b_store_date}@{\${def:date}";
-			label = "${lbl:b_store_date}@{\${def:date}}";
+			name  = "b_store_date}@{${def:date}";
+			label = "${lbl:b_store_date}@{${def:date}}";
 			str_filter = StringUtil.replace(label, label, _labels.getLabel(name, _language));
 
 			//filter field

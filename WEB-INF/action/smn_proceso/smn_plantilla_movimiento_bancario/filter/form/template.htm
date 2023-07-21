@@ -218,7 +218,7 @@
 	//mostrar una pagina del grid
 	function viewPage()
 	{
-		var url = "${def:actionroot}/view";
+		var url = "${def:actionroot}/../view";
 		//llama a la funcion para ir a la pagina indicada 
 		gotoPage(url);
 	}		
@@ -235,7 +235,7 @@
 	function openPDF()
 	{
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../pdf?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 
@@ -243,27 +243,27 @@
 	function openExcel()
 	{
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../excel?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 	
 	//exportar a xml
 	function openXml() {
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/xml/search?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../xml/search?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 	
 	//exportar a texto
 	function openTxt() {
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/txt/search?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../txt/search?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 	
 	//envio de emails
 	function openEmails() {
-		var uri = "${def:context}${def:actionroot}/email/form";					
+		var uri = "${def:context}${def:actionroot}/../email/form";					
 		openDialog("editor0", uri, 950, 600);	
 	}
 	
@@ -272,7 +272,7 @@
 	{
 //		//alert('Colocar su c�digo aqu�.')
 		
-		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+		var uri = "${def:context}${def:actionroot}/../detail/form?id=" + id;
 		openDialog("dialog", uri, 650, 390);
 		
 	}
@@ -301,7 +301,7 @@
 	//eliminar un registro
 	function deleteRecordOK(id) {
 			ajaxCall(httpMethod="GET", 
-							uri="${def:actionroot}/delete?id=" + id,
+							uri="${def:actionroot}/../delete?id=" + id,
 							divResponse=null, 
 							divProgress="status", 
 							formName=null, 
@@ -384,7 +384,7 @@
 
 
 	function conciliar(id,st){
-             
+
             if(st=='Generado' || st=='En Conciliacion'){
                 uri = "${def:context}${def:actionroot}/../conciliar?plantilla_id="+id;
                 openDialog("dialog",uri,300,260);

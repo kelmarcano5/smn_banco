@@ -1,4 +1,4 @@
-package domain.repgen.smn_configuracion.smn_rel_zona_coordenadas;
+package domain.repgen.smn_configuracion.smn_ubicacion_geografica.smn_rel_zona_coordenadas;
 
 import javax.servlet.ServletContext;
 

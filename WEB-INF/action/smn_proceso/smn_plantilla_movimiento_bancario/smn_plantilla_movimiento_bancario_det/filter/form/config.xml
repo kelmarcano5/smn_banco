@@ -11,11 +11,12 @@
 
 	<transaction>
 		<classname>dinamica.GenericTransaction</classname>
-		<validator>false</validator>
+		<validator>true</validator>
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
 		<recordset id='query-smn_equivalencia_doc_bancario_id.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_tipo_documento_id.sql' source='sql' scope='transaction'/>
+		<recordset id='smn_relacion' source='session' scope='transaction'/>
 	</transaction>
 
 	<output>
@@ -25,6 +26,7 @@
 		<content-type>text/html</content-type>
 		<print mode='table' recordset='query-smn_equivalencia_doc_bancario_id.sql' tag='smn_equivalencia_doc_bancario_id_rows'/>
 		<print mode='table' recordset='query-smn_tipo_documento_id.sql' tag='smn_tipo_documento_id_rows'/>
+        <print mode="form" recordset="_request" /> 
 	</output>
 
 </config>
