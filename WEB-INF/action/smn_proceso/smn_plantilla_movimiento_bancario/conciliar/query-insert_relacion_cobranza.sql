@@ -36,10 +36,7 @@ VALUES
 	${fld:smn_documentos_generales_rf}, 
 	${fld:mov_numero_documento},
   	(Select smn_documento_id from smn_cobranza.smn_documento where smn_documento_general_rf=${fld:smn_documentos_generales_rf}),
-	(SELECT CASE 
-	WHEN rco_numero_documento IS NULL THEN 1 
-	ELSE  rco_numero_documento + 1 END AS numero
-FROM smn_cobranzas.smn_relacion_cobranza),
+	(SELECT rco_numero_documento+1 FROM smn_cobranzas.smn_relacion_cobranza ORDER BY rco_numero_documento DESC LIMIT 1),
 	${fld:smn_auxiliar_rf},
 	${fld:mov_monto_ml},
 	${fld:smn_moneda_rf},

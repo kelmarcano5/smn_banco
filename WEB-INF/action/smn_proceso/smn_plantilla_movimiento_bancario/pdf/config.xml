@@ -35,7 +35,6 @@
 			<col name='smn_cuenta_bancaria_rf' title='${lbl:b_bank_account}' width='16' align='left' format='######' />
 			<col name='pmb_estatus' title='${lbl:b_status}' width='16' align='left' />
 			<col name='pmb_fecha_registro' title='${lbl:b_store_date}' width='16' align='left' format='dd-MM-yyyy' />
-			<col name='pmb_fecha_movimiento' title='${lbl:b_movement_date}' width='16' align='left' format='dd-MM-yyyy' />
 
 		</record>
 

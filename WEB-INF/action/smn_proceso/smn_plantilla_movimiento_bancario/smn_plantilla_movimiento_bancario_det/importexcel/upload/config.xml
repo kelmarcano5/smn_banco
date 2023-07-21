@@ -2,7 +2,7 @@
 <config nodb="true">
 
 	<summary>
-		Upload de un archivo y retorna la ruta del temporal mas el tamaï¿½o, formato y nombre original
+		Upload de un archivo y retorna la ruta del temporal mas el tamaño, formato y nombre original
 		para que puedar guardarse en campos escondidos del formulario.
 	</summary>
 	
@@ -14,7 +14,7 @@
 		<classname>dinamica.upload.UploadTransaction</classname>
 		<validator>true</validator>
 		<transaction>false</transaction>
-		<jdbc-log>true</jdbc-log>
+		<jdbc-log>false</jdbc-log>
 	</transaction>
 
 	<output>

@@ -34,7 +34,6 @@
 		<col id='smn_cuenta_bancaria_rf' label='${lbl:b_bank_account}' />
 		<col id='pmb_estatus' label='${lbl:b_status}' />
 		<col id='pmb_fecha_registro' label='${lbl:b_store_date}' />
-		<col id='pmb_fecha_movimiento' label='${lbl:b_movement_date}' />
 
 	</excel>
 
