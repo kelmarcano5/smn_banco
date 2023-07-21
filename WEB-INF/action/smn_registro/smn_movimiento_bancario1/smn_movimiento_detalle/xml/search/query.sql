@@ -1,9 +1,0 @@
-select
-	smn_banco.smn_movimiento_detalle.smn_movimiento_detalle_id,
-	smn_banco.smn_movimiento_detalle.smn_concepto_id,
-	smn_banco.smn_movimiento_detalle.dmo_tipo_movimiento,
-	smn_banco.smn_movimiento_detalle.dmo_monto_ml,
-	smn_banco.smn_movimiento_detalle.smn_tasa_rf,
-	smn_banco.smn_movimiento_detalle.dmo_fecha_registro
-from
-	smn_banco.smn_movimiento_detalle

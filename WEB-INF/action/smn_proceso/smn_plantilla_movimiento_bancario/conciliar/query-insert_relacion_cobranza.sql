@@ -58,5 +58,5 @@ VALUES
     0,
     0,
     0,
-    ${fld:smn_forma_pago_rf}
+    ${fld:smn_formas_pago_rf}
 );

@@ -20,7 +20,7 @@ checkbox.setAttribute("onclick","javascript:sumar('detalle','${fld:mov_monto_ml}
 
 var span = document.createElement('span')
 span.id = "smn_movimiento_bancario_id";
-span.appendChild(document.createTextNode(' ${fld:mov_descripcion_movimiento} | ${fld:mov_numero_documento} |${fld:mov_monto_ml@##,###,##0.00}'));
+span.appendChild(document.createTextNode(' ${fld:mov_descripcion_movimiento} | ${fld:mov_numero_documento} | ${fld:mov_monto_ml@##,###,##0.00}'));
 
 var br = document.createElement('br');
 br.id = "smn_movimiento_bancario_id";

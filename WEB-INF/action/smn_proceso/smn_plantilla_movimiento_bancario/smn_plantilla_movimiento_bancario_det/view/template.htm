@@ -12,12 +12,11 @@
 	<col width='12%'/>
 	<col width='12%'/>
 	<col width='12%'/>
-	<col width='12%'/>
 
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="12" id="encabezado_tabla">
+		<th colspan="11" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
@@ -31,7 +30,6 @@
 		<th class='sortable' onclick='sortBy("pmd_numero_referencia_bancaria","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_bank_reference_number}</th>
 		<th class='sortable' onclick='sortBy("smn_equivalencia_doc_bancario_id","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_bank_equivalence}</th>
 		<th class='sortable' onclick='sortBy("smn_tipo_documento_id","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_document_type}</th>
-		<th class='sortable' onclick='sortBy("cliente","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_customer}</th>
 		<th class='sortable' onclick='sortBy("pmd_descripcion","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_description}</th>
 		<th class='sortable' onclick='sortBy("pmd_monto","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_amount}</th>
 		<th class='sortable' onclick='sortBy("pmd_estatus","query-smnplantillamovimientobancariodet.sql")'>${lbl:b_status}</th>
@@ -51,7 +49,6 @@
 		<td>${fld:pmd_numero_referencia_bancaria}</td>
 		<td>${fld:smn_equivalencia_doc_bancario_desc}</td>
 		<td>${fld:smn_tipo_documento_id}</td>
-		<td>${fld:cliente}</td>
 		<td align='left'>${fld:pmd_descripcion}</td>
 		<td align='right'>${fld:pmd_monto@#,###,##0.00}</td>
 		<td align='left'>${fld:pmd_estatus}</td>

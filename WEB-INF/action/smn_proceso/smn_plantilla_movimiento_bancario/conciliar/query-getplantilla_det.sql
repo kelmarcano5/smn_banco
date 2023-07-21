@@ -14,7 +14,7 @@ select
   smn_moneda_rf,
   pmd_monto_ma as monto_ma,
   doc_es_cobranza,
-  smn_banco.smn_documento.smn_formas_pago_rf
+  smn_formas_pago_rf
 from smn_banco.smn_plantilla_movimiento_bancario_det
 inner join smn_banco.smn_plantilla_movimiento_bancario on smn_banco.smn_plantilla_movimiento_bancario.smn_plantilla_movimiento_bancario_id=smn_banco.smn_plantilla_movimiento_bancario_det.smn_plantilla_movimiento_bancario_id
 inner join smn_banco.smn_tipo_documento on smn_banco.smn_tipo_documento.smn_tipo_documento_id=smn_banco.smn_plantilla_movimiento_bancario_det.smn_tipo_documento_id

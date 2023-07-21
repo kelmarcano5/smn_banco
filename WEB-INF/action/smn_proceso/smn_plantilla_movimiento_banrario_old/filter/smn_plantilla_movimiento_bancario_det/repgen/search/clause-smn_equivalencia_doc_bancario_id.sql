@@ -1,2 +1,0 @@
- and
- 	smn_banco.smn_plantilla_movimiento_bancario_det.smn_equivalencia_doc_bancario_id=${fld:smn_equivalencia_doc_bancario_id}

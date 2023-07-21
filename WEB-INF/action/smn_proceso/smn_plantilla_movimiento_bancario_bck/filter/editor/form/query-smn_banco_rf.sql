@@ -1,1 +1,0 @@
-select smn_entidades_financieras_id as id, efi_codigo||' - '||efi_nombre as item from smn_base.smn_entidades_financieras order by smn_entidades_financieras_id

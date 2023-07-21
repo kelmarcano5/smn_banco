@@ -3,12 +3,15 @@
 
 <head>
 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-
-<!--biblioteca generica JS/Dinamica-->
-<script type="text/javascript" src="${def:context}/action/script">
-</script>
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -261,6 +264,24 @@
 							formName=null, 
 							afterResponseFn=null, 
 							onErrorFn=null);	
+	}
+
+	function showEditor2(id, sta, ent, suc, ban, cta, mto, equi){
+		
+					
+		//editor a nivel de panel iconogr�fico
+		if(sta!='CN'){
+		
+			uri = "${def:context}${def:actionroot}/../editor_conciliar/form?id=" + id+"&smn_entidades_rf="+ent+"&smn_sucursal_rf="+suc+"&smn_entidad_financiera_id="+ban+"&smn_cuenta_bancaria_rf="+cta+"&pmd_monto="+mto+"&smn_equivalencia_ban_rf="+equi;
+			
+				
+			openDialog("editor6", uri, 650, 570);
+		}
+		else
+			alertBox("Movimiento Bancario esta ya conciliado, no procede conciliar", 'Continuar', null, null);
+		
+
+		
 	}
 
 			

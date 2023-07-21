@@ -1641,3 +1641,6 @@ function getFormValuesToStore(formName)
 	return returnString;
 
 }
+
+var wdt = document.documentElement.scrollWidth-30;
+var hgt = document.documentElement.scrollHeight;

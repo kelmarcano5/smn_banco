@@ -19,12 +19,15 @@ select
 	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_idioma,
 	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_hora,
 	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_usuario,
-	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_fecha_registro
+	smn_banco.smn_plantilla_movimiento_bancario_det.pmd_fecha_registro,
+	cliente.aux_rif ||' '|| cliente.aux_descripcion as cliente
 from
 	smn_banco.smn_plantilla_movimiento_bancario_det
 	inner join smn_banco.smn_equivalencia_doc_bancario on smn_banco.smn_equivalencia_doc_bancario.smn_equivalencia_doc_bancario_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_equivalencia_doc_bancario_id
 	inner join smn_banco.smn_tipo_documento on smn_banco.smn_tipo_documento.smn_tipo_documento_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_tipo_documento_id
-	inner join smn_base.smn_monedas on smn_base.smn_monedas.smn_monedas_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_moneda_rf
-	inner join smn_base.smn_tasas_de_cambio on smn_base.smn_tasas_de_cambio.smn_tasas_de_cambio_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_tasa_rf
+	left join smn_base.smn_monedas on smn_base.smn_monedas.smn_monedas_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_moneda_rf
+	left join smn_base.smn_tasas_de_cambio on smn_base.smn_tasas_de_cambio.smn_tasas_de_cambio_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_tasa_rf
+	inner join smn_comercial.smn_cliente on smn_comercial.smn_cliente.smn_cliente_id = smn_banco.smn_plantilla_movimiento_bancario_det.smn_cliente_rf
+	left join smn_base.smn_auxiliar cliente on cliente.smn_auxiliar_id = smn_comercial.smn_cliente.smn_auxiliar_rf
 where
 	smn_plantilla_movimiento_bancario_det_id = ${fld:id}

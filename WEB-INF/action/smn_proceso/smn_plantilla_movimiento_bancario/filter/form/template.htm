@@ -284,9 +284,9 @@
 		
 		var uri = "";
 		if (id==null)
-		 	uri = "${def:context}${def:actionroot}/editor/form";
+		 	uri = "${def:context}${def:actionroot}/../editor/form";
 		else
-			uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
+			uri = "${def:context}${def:actionroot}/../editor/form?id=" + id;
 			
 		openDialog("editor", uri, 650, 390);
 		
@@ -407,7 +407,7 @@
            }
 
 	function relacion(id2, ent, suc, ban, cta) {
-		uri = "${def:context}${def:actionroot}/smn_plantilla_movimiento_bancario_det/form?id2="+ id2+"&smn_entidades_rf="+ent+"&smn_sucursal_rf="+suc+"&smn_entidad_financiera_id="+ban+"&smn_cuenta_bancaria_rf="+cta;
+		uri = "${def:context}${def:actionroot}/../smn_plantilla_movimiento_bancario_det/form?id2="+ id2+"&smn_entidades_rf="+ent+"&smn_sucursal_rf="+suc+"&smn_entidad_financiera_id="+ban+"&smn_cuenta_bancaria_rf="+cta;
 		
 		openDialog("dialog", uri, 1300, 700);
 	}
