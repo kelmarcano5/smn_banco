@@ -2,7 +2,7 @@
 <validator onerror='/action/error/validation/ajax'>
 	<parameter id='smn_plantilla_movimiento_bancario_id' type='integer' required='true' label='${lbl:b_template_bank_movement}' maxlen='10'/>
 	<parameter id='pmd_fecha' type='date' required='true' label='${lbl:s_loginhist_col1}' maxlen='10'/>
-	<parameter id='pmd_numero_referencia_bancaria' type='varchar' required='true' label='${lbl:b_bank_reference_number}' maxlen='20'/>
+	<parameter id='pmd_numero_referencia_bancaria' type='integer' required='true' label='${lbl:b_bank_reference_number}' maxlen='10'/>
 	<parameter id='smn_equivalencia_doc_bancario_id' type='integer' required='true' label='${lbl:b_bank_equivalence}' maxlen='10'/>
 	<parameter id='smn_tipo_documento_id' type='integer' required='true' label='${lbl:b_document_type}' maxlen='10'/>
 	<parameter id='pmd_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='120'/>

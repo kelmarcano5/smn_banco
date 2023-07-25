@@ -17,7 +17,6 @@
 	<parameter id="smn_sucursal_rf" type="integer" required="false" label="ID Sucursal" maxlen='10'/>
 	<parameter id="smn_entidad_financiera_id" type="integer" required="false" label="ID banco" maxlen='10'/>
 	<parameter id="smn_cuenta_bancaria_rf" type="integer" required="false" label="ID Cta Bancaria" maxlen='10'/>
-	<parameter id='smn_cliente_rf' type='integer' required='false' label='${lbl:b_rate}' maxlen='10'/>
 	
 	<custom-validator classname='dinamica.validators.CreateRecordset' 
 		definition='recordset-mov_bancario.xml' 

@@ -36,7 +36,10 @@ VALUES
 	${fld:smn_documentos_generales_rf}, 
 	${fld:mov_numero_documento},
   	(Select smn_documento_id from smn_cobranza.smn_documento where smn_documento_general_rf=${fld:smn_documentos_generales_rf}),
-	(SELECT rco_numero_documento+1 FROM smn_cobranzas.smn_relacion_cobranza ORDER BY rco_numero_documento DESC LIMIT 1),
+	(SELECT CASE 
+	WHEN rco_numero_documento IS NULL THEN 1 
+	ELSE  rco_numero_documento + 1 END AS numero
+FROM smn_cobranzas.smn_relacion_cobranza),
 	${fld:smn_auxiliar_rf},
 	${fld:mov_monto_ml},
 	${fld:smn_moneda_rf},
@@ -58,5 +61,5 @@ VALUES
     0,
     0,
     0,
-    ${fld:smn_formas_pago_rf}
+    ${fld:smn_forma_pago_rf}
 );

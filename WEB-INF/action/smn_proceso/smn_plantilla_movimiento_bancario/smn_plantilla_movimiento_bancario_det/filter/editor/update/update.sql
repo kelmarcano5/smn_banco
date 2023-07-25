@@ -10,9 +10,8 @@ UPDATE smn_banco.smn_plantilla_movimiento_bancario_det SET
 	smn_moneda_rf=${fld:smn_moneda_rf},
 	pmd_monto_ma=${fld:pmd_monto_ma},
 	pmd_estatus=${fld:pmd_estatus},
-	pmd_fecha_registro=${fld:pmd_fecha_registro},
-	smn_cliente_rf=${fld:smn_cliente_rf}
+	pmd_fecha_registro=${fld:pmd_fecha_registro}
 
 WHERE
-	smn_plantilla_movimiento_bancario_det_id=${fld:id}
+	smn_plantilla_movimiento_bancario_det=${fld:id}
 

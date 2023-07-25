@@ -20,4 +20,4 @@ inner join smn_banco.smn_plantilla_movimiento_bancario on smn_banco.smn_plantill
 inner join smn_banco.smn_tipo_documento on smn_banco.smn_tipo_documento.smn_tipo_documento_id=smn_banco.smn_plantilla_movimiento_bancario_det.smn_tipo_documento_id
 inner join smn_banco.smn_equivalencia_doc_bancario on smn_banco.smn_equivalencia_doc_bancario.smn_equivalencia_doc_bancario_id=smn_banco.smn_plantilla_movimiento_bancario_det.smn_equivalencia_doc_bancario_id
 inner join smn_banco.smn_documento on smn_banco.smn_documento.smn_documento_id=smn_banco.smn_equivalencia_doc_bancario.smn_documento_id
-where smn_plantilla_movimiento_bancario_det_id=${fld:detalle_id} and pmd_estatus = 'GE'
+where smn_plantilla_movimiento_bancario_det_id=${fld:detalle_id} and pmd_estatus in ('GE', 'NC', 'EC')

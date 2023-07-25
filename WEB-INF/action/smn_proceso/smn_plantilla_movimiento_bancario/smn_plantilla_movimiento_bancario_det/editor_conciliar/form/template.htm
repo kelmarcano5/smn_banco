@@ -18,164 +18,150 @@
 
 <!--banner-->
 <div class="bannerDialog" id="encabezado_tabla">
-	${lbl:b_template_bank_movement_detail}
-	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
-	${req:progress}
+  ${lbl:b_template_bank_movement_detail}
+  <img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+  ${req:progress}
 </div>
 
 <!--formulario addnew/edit-->
 <form name="form1" onsubmit="return save()" style="width:500px;">
 
-	<!-- titulo -->
-	<h1 id="formTitle">${lbl:b_add_record}</h1>
+  <!-- titulo -->
+  <h1 id="formTitle">${lbl:b_add_record}</h1>
 
-	<table>
+  <table>
 
-	<!--ancho de la columna de etiquetas-->
-	<col width="30%">
+  <!--ancho de la columna de etiquetas-->
+  <col width="30%">
 
-	<!--campos-->
-	<tr>
-		<td>${lbl:b_template_bank_movement}</td>
-		<td>
-			<input id="smn_plantilla_movimiento_bancario_id" name="smn_plantilla_movimiento_bancario_id" type="text" maxlength="10" class="numeric">
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:s_loginhist_col1}</td>
-		<td>
-			<input id="pmd_fecha" name="pmd_fecha" type="text" class="date" maxlength="10" disabled>
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_customer}*</td>
-		<td>
-			<select class="cliente" name="smn_cliente_rf" id="smn_cliente_rf" onchange="chgCombo(smn_cliente_rf.options[smn_cliente_rf.selectedIndex].text,'smn_cliente_rf_name');">
-				<option value="">[Cualquiera]</option>
-				<smn_cliente_rf_rows>
-				<option value="${fld:id}">${fld:item}</option>
-
-				</smn_cliente_rf_rows>
-			</select> 
-			<input id="smn_cliente_rf_name" name="smn_cliente_rf_name" type="hidden">
-		</td>
-			<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
-	</tr>
-	<tr>
-		<td>${lbl:b_bank_reference_number}</td>
-		<td>
-			<input id="pmd_numero_referencia_bancaria" name="pmd_numero_referencia_bancaria" type="number" maxlength="20">
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_bank_equivalence}</td>
-		<td>
-			<select name="smn_equivalencia_doc_bancario_id" id="smn_equivalencia_doc_bancario_id" onchange="chgCombo(smn_equivalencia_doc_bancario_id.options[smn_equivalencia_doc_bancario_id.selectedIndex].text,'smn_equivalencia_doc_bancario_id_name');" disabled>
-				<option value="">[Cualquiera]</option>
-				<smn_equivalencia_doc_bancario_id_rows>
-				<option value="${fld:id}">${fld:item}</option>
-				</smn_equivalencia_doc_bancario_id_rows>
-			</select> 
-			<input id="smn_equivalencia_doc_bancario_id_name" name="smn_equivalencia_doc_bancario_id_name" type="hidden">
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_document_type}</td>
-		<td>
-			<select name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');" disabled>
-				<option value="">[Cualquiera]</option>
-				<smn_tipo_documento_id_rows>
-				<option value="${fld:id}">${fld:item}</option>
-				</smn_tipo_documento_id_rows>
-			</select> 
-			<input id="smn_tipo_documento_id_name" name="smn_tipo_documento_id_name" type="hidden">
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_description}</td>
-		<td>
-			<textarea id="pmd_descripcion" name="pmd_descripcion" cols="30" rows="3" disabled></textarea> 
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_amount}</td>
-		<td>
-			<input id="pmd_monto" name="pmd_monto" type="text" maxlength="10" class="numeric" disabled>
-		</td>
-	</tr>
-	<tr id="detalle_" name="detalle_">
-				<td>${lbl:b_key_move_bancario}*</td>
-				<td id="detalle" name="detalle">
-					<smn_mov_bancario_rows> 
-						<input name="smn_mov_bancario_id" id="smn_mov_bancario_id" type="checkbox" value="${fld:smn_movimiento_bancario_id}" style="width: 10px" onclick="sumar('${fld:mov_monto_ml}')"><br>
-					</smn_mov_bancario_rows>
-				</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_full_mount}*</td>
-				<td><input id="det_monto_total" name="det_monto_total"
-					type="text" maxlength="10" class="numeric" disabled="true"></td>
-	</tr>
-	<tr>
-		<td>${lbl:b_rate}</td>
-		<td>
-			<select name="smn_tasa_rf" id="smn_tasa_rf" onchange="chgCombo(smn_tasa_rf.options[smn_tasa_rf.selectedIndex].text,'smn_tasa_rf_name');" disabled>
-				<option value="">[Cualquiera]</option>
-				<smn_tasa_rf_rows>
-				<option value="${fld:id}">${fld:item}</option>
-				</smn_tasa_rf_rows>
-			</select> 
-			<input id="smn_tasa_rf_name" name="smn_tasa_rf_name" type="hidden">
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_coin}</td>
-		<td>
-			<select name="smn_moneda_rf" id="smn_moneda_rf" onchange="chgCombo(smn_moneda_rf.options[smn_moneda_rf.selectedIndex].text,'smn_moneda_rf_name');" disabled>
-				<option value="">[Cualquiera]</option>
-				<smn_moneda_rf_rows>
-				<option value="${fld:id}">${fld:item}</option>
-				</smn_moneda_rf_rows>
-			</select> 
-			<input id="smn_moneda_rf_name" name="smn_moneda_rf_name" type="hidden">
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_amount_ma}</td>
-		<td>
-			<input id="pmd_monto_ma" name="pmd_monto_ma" type="text" maxlength="10" class="numeric" disabled>
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_status}</td>
-		<td>
-			<select name="pmd_estatus" id="pmd_estatus" disabled>
-			<option value="GE">${lbl:b_generated}</option>
-			<option value="CN">${lbl:b_concil}</option>
-			<option value="NC">${lbl:b_no_concil}</option>
-			<option value="AL">${lbl:b_alarm}</option>
-			</select> 
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_store_date}</td>
-		<td>
-			<input id="pmd_fecha_registro" name="pmd_fecha_registro" type="text" class="date" maxlength="10" disabled>
-		</td>
-	</tr>
+  <!--campos-->
+  <tr>
+    <td>${lbl:b_template_bank_movement}</td>
+    <td>
+      <input id="smn_plantilla_movimiento_bancario_id" name="smn_plantilla_movimiento_bancario_id" type="text" maxlength="10" class="numeric">
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:s_loginhist_col1}</td>
+    <td>
+      <input id="pmd_fecha" name="pmd_fecha" type="text" class="date" maxlength="10" disabled>
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_bank_reference_number}</td>
+    <td>
+      <input id="pmd_numero_referencia_bancaria" name="pmd_numero_referencia_bancaria" type="number" maxlength="20">
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_bank_equivalence}</td>
+    <td>
+      <select name="smn_equivalencia_doc_bancario_id" id="smn_equivalencia_doc_bancario_id" onchange="chgCombo(smn_equivalencia_doc_bancario_id.options[smn_equivalencia_doc_bancario_id.selectedIndex].text,'smn_equivalencia_doc_bancario_id_name');">
+        <option value="">[Cualquiera]</option>
+        <smn_equivalencia_doc_bancario_id_rows>
+        <option value="${fld:id}">${fld:item}</option>
+        </smn_equivalencia_doc_bancario_id_rows>
+      </select> 
+      <input id="smn_equivalencia_doc_bancario_id_name" name="smn_equivalencia_doc_bancario_id_name" type="hidden">
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_document_type}</td>
+    <td>
+      <select name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');" disabled>
+        <option value="">[Cualquiera]</option>
+        <smn_tipo_documento_id_rows>
+        <option value="${fld:id}">${fld:item}</option>
+        </smn_tipo_documento_id_rows>
+      </select> 
+      <input id="smn_tipo_documento_id_name" name="smn_tipo_documento_id_name" type="hidden">
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_description}</td>
+    <td>
+      <textarea id="pmd_descripcion" name="pmd_descripcion" cols="30" rows="3" disabled></textarea> 
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_amount}</td>
+    <td>
+      <input id="pmd_monto" name="pmd_monto" type="text" maxlength="10" class="numeric" disabled>
+    </td>
+  </tr>
+  <tr id="detalle_" name="detalle_">
+        <td>${lbl:b_key_move_bancario}*</td>
+        <td id="detalle" name="detalle">
+          <smn_mov_bancario_rows> 
+            <input name="smn_mov_bancario_id" id="smn_mov_bancario_id" type="checkbox" value="${fld:smn_movimiento_bancario_id}" style="width: 10px" onclick="sumar('${fld:mov_monto_ml}')"><br>
+          </smn_mov_bancario_rows>
+        </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_full_mount}*</td>
+        <td><input id="det_monto_total" name="det_monto_total"
+          type="text" maxlength="10" class="numeric" disabled="true"></td>
+  </tr>
+  <tr>
+    <td>${lbl:b_rate}</td>
+    <td>
+      <select name="smn_tasa_rf" id="smn_tasa_rf" onchange="chgCombo(smn_tasa_rf.options[smn_tasa_rf.selectedIndex].text,'smn_tasa_rf_name');" disabled>
+        <option value="">[Cualquiera]</option>
+        <smn_tasa_rf_rows>
+        <option value="${fld:id}">${fld:item}</option>
+        </smn_tasa_rf_rows>
+      </select> 
+      <input id="smn_tasa_rf_name" name="smn_tasa_rf_name" type="hidden">
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_coin}</td>
+    <td>
+      <select name="smn_moneda_rf" id="smn_moneda_rf" onchange="chgCombo(smn_moneda_rf.options[smn_moneda_rf.selectedIndex].text,'smn_moneda_rf_name');" disabled>
+        <option value="">[Cualquiera]</option>
+        <smn_moneda_rf_rows>
+        <option value="${fld:id}">${fld:item}</option>
+        </smn_moneda_rf_rows>
+      </select> 
+      <input id="smn_moneda_rf_name" name="smn_moneda_rf_name" type="hidden">
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_amount_ma}</td>
+    <td>
+      <input id="pmd_monto_ma" name="pmd_monto_ma" type="text" maxlength="10" class="numeric" disabled>
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_status}</td>
+    <td>
+      <select name="pmd_estatus" id="pmd_estatus" disabled>
+      <option value="GE">${lbl:b_generated}</option>
+      <option value="CN">${lbl:b_concil}</option>
+      <option value="NC">${lbl:b_no_concil}</option>
+      <option value="AL">${lbl:b_alarm}</option>
+      </select> 
+    </td>
+  </tr>
+  <tr>
+    <td>${lbl:b_store_date}</td>
+    <td>
+      <input id="pmd_fecha_registro" name="pmd_fecha_registro" type="text" class="date" maxlength="10" disabled>
+    </td>
+  </tr>
 
 
-	</table>
+  </table>
 
-	<!--botones-->
-	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
-	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
-	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
-	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
-	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
-	
-	<!-- PK-->
-<input type="hidden" name="id" value="">
+  <!--botones-->
+  <input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+  <input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+  <input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+  <input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+  <input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+  
+  <!-- PK-->
+<input type="hidden" name="id" value="" id="id">
 <input type="hidden" name="smn_entidades_rf" id="smn_entidades_rf" value="">
 <input type="hidden" name="smn_sucursal_rf" id="smn_sucursal_rf" value="">
 <input type="hidden" name="smn_entidad_financiera_id" id="smn_entidad_financiera_id" value="">
@@ -187,174 +173,182 @@
 
 <!--codigo de soporte del template-->
 <script type="text/javascript">
+  var id = "${fld:id}"
+  onload = function()
+  { 
+    addNew();
+    
+    document.form1.det_monto_total.value = 0;
+      
+    document.getElementById("smn_plantilla_movimiento_bancario_id").value = '${fld:id2}';
+    document.getElementById("smn_entidades_rf").value='${fld:smn_entidades_rf}';
+    document.getElementById("smn_sucursal_rf").value='${fld:smn_sucursal_rf}';
+    document.getElementById("smn_entidad_financiera_id").value='${fld:smn_entidad_financiera_id}';
+    document.getElementById("smn_cuenta_bancaria_rf").value='${fld:smn_cuenta_bancaria_rf}';
+    document.getElementById("pmd_monto").value='${fld:pmd_monto}';
+    document.getElementById("smn_equivalencia_ban2_rf").value='${fld:smn_equivalencia_ban_rf}';
+    
+    document.form1.smn_plantilla_movimiento_bancario_id.disabled=true; 
+    var equi = document.getElementById("smn_equivalencia_ban2_rf").value;
+    
+    if (equi==0) 
+      document.getElementById("smn_equivalencia_doc_bancario_id").disabled=false;
 
-	onload = function()
-	{ 
-		addNew();
+    if (id!="")
+      edit(id);
 
-		$('.cliente').select2();		
-		document.form1.det_monto_total.value = 0;
-			
-		document.getElementById("smn_plantilla_movimiento_bancario_id").value = '${fld:id2}';
-		document.getElementById("smn_entidades_rf").value='${fld:smn_entidades_rf}';
-		document.getElementById("smn_sucursal_rf").value='${fld:smn_sucursal_rf}';
-		document.getElementById("smn_entidad_financiera_id").value='${fld:smn_entidad_financiera_id}';
-		document.getElementById("smn_cuenta_bancaria_rf").value='${fld:smn_cuenta_bancaria_rf}';
-		document.getElementById("pmd_monto").value='${fld:pmd_monto}';
-		document.getElementById("smn_equivalencia_ban2_rf").value='${fld:smn_equivalencia_ban_rf}';
-		
-		document.form1.smn_plantilla_movimiento_bancario_id.disabled=true; 
-		var equi = document.getElementById("smn_equivalencia_ban2_rf").value;
-		
-		if (equi==0) 
-			document.getElementById("smn_equivalencia_doc_bancario_id").disabled=false;
-			
+    
+  } 
+  
+  function chgCombo(text,id)
+  {
+    document.getElementById(id).value = text;
+  }
+  
+  //configurar formulario para ingresar registro nuevo
+  function addNew()
+  {
+    document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+    document.getElementById("grabar").disabled=false;
+    clearForm("form1");
+    setFocusOnForm("form1");
+  }
+  
+  //retorna al estado previo que corresponde
+  //al estado actual de la pagina, cada llamada Ajax
+  //se encarga de definir cual es la funcion de goBack() que aplica
+  function goBack() 
+  {
+    _goBackFn()			
+  }
+  
+  //mostrar la actualizacion de un registro
+  function insert()
+  {		
+      clearErrorMessages();
+      document.getElementById("grabar").disabled=true;
+      
+      //llamada Ajax...
+      return ajaxCall(httpMethod="POST", 
+              uri="${def:actionroot}/insert", 
+              divResponse=null, 
+              divProgress="status", 
+              formName="form1", 
+              afterResponseFn=null, 
+              onErrorFn=retryAddnewOrEdit);	
+  }
+  
+  //restaurar el formulario en caso de error
+  function retryAddnewOrEdit() {
+    document.getElementById("grabar").disabled=false;
+    setFocusOnForm("form1");		
+  }
+  
+  
+  
+  //grabar el formulario
+  function save()
+  {
+    //determina si es un insert o un update
+    var monto_total = document.getElementById("det_monto_total").value;
+    var monto_mov1 = document.getElementById("pmd_monto").value;
+    //alert('MONTO '+ document.getElementById("pmd_monto").value + ' monto_mov1 '+monto_mov1);
+    monto_mov1 = monto_mov1.replace(",",".");
+    var monto_mov2 = parseFloat(monto_mov1);
 
-		if (id!="")
-			edit(id);
+    //alert('MONTO11 '+ monto_mov2);
+    var monto_mov = monto_mov2.toFixed(2);
+    //alert('MONTO22 '+ monto_mov);
+    //var dif = parseFloat(monto_total) - parseFloat(monto_mov);
+    var dif = monto_total - monto_mov;
+    //alert('monto total '+ monto_total+' Monto mov  '+monto_mov+' dif '+dif);
+    if(dif!=0)
+      alertBox("Total Montos de Movimiento Bancario seleccionado debe ser igual al Monto de la plantilla", 'Continuar', null, null);
 
-		
-	} 
-	
-	function chgCombo(text,id)
-	{
-		document.getElementById(id).value = text;
-	}
-	
-	//configurar formulario para ingresar registro nuevo
-	function addNew()
-	{
-		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
-		document.getElementById("grabar").disabled=false;
-		clearForm("form1");
-		setFocusOnForm("form1");
-	}
-	
-	//retorna al estado previo que corresponde
-	//al estado actual de la pagina, cada llamada Ajax
-	//se encarga de definir cual es la funcion de goBack() que aplica
-	function goBack() 
-	{
-		_goBackFn()			
-	}
-	
-	//mostrar la actualizacion de un registro
-	function insert()
-	{		
-			clearErrorMessages();
-			document.getElementById("grabar").disabled=true;
-			
-			//llamada Ajax...
-			return ajaxCall(httpMethod="POST", 
-							uri="${def:actionroot}/insert", 
-							divResponse=null, 
-							divProgress="status", 
-							formName="form1", 
-							afterResponseFn=null, 
-							onErrorFn=retryAddnewOrEdit);	
-	}
-	
-	//restaurar el formulario en caso de error
-	function retryAddnewOrEdit() {
-		document.getElementById("grabar").disabled=false;
-		setFocusOnForm("form1");		
-	}
-	
-	var id = "${fld:id}"
-	
-	//grabar el formulario
-	function save()
-	{
-		//determina si es un insert o un update
-		var monto_total = document.getElementById("det_monto_total").value;
-		var monto_mov = document.getElementById("pmd_monto").value;
-		var dif = parseFloat(monto_total) - parseFloat(monto_mov);
-		
-		if(dif!=0)
-			alertBox("Total Montos de Movimiento Bancario seleccionado debe ser igual al Monto de la plantilla", 'Continuar', null, null);
+     else if (document.form1.id.value=="")
+        return insert();
+        else
+         return update();
+  }
+  
+  //editar registro en formulario
+  function edit(id)
+  {
+      clearErrorMessages();
+      
+      //llamada Ajax...
+      ajaxCall(httpMethod="GET", 
+              uri="${def:actionroot}/edit?id=" + id , 
+              divResponse=null, 
+              divProgress="status", 
+              formName=null, 
+              afterResponseFn=buscarmov(), 
+              onErrorFn=null);	
+  }
+  
+  //actualizar registro en BD
+  function update()
+  {		
+      clearErrorMessages();
+      document.getElementById("grabar").disabled=true;
+      $('#id').val(id);
+      console.log(`iddd::::: ${id}`);
+      //llamada Ajax...
+      return ajaxCall(httpMethod="POST", 
+              uri="${def:actionroot}/update", 
+              divResponse=null, 
+              divProgress="status", 
+              formName="form1", 
+              afterResponseFn=null, 
+              onErrorFn=retryAddnewOrEdit);	
+  }
+  //Sumamos la selección de totales
+    function sumar(detalle, precio, input) {
+      
+      var monto_total = document.getElementById("det_monto_total").value;
+      //alert('en sumar '+monto_total);
+      if (input.checked === true){
+        monto_total = parseFloat(monto_total) + parseFloat(precio);
+        
+        //alert("total1: "+monto_total);
+        } else {
+          monto_total = parseFloat(monto_total) - parseFloat(precio);
+          //alert("total2: "+monto_total);
+        }
+      document.form1.det_monto_total.value = monto_total.toFixed(2);
 
-		 else if (document.form1.id.value=="")
-				return insert();
-			  else
-				 return update();
-	}
-	
-	//editar registro en formulario
-	function edit(id)
-	{
-			clearErrorMessages();
-			
-			//llamada Ajax...
-			ajaxCall(httpMethod="GET", 
-							uri="${def:actionroot}/edit?id=" + id , 
-							divResponse=null, 
-							divProgress="status", 
-							formName=null, 
-							afterResponseFn=buscarmov(), 
-							onErrorFn=null);	
-	}
-	
-	//actualizar registro en BD
-	function update()
-	{		
-			clearErrorMessages();
-			document.getElementById("grabar").disabled=true;
-			
-			//llamada Ajax...
-			return ajaxCall(httpMethod="POST", 
-							uri="${def:actionroot}/update", 
-							divResponse=null, 
-							divProgress="status", 
-							formName="form1", 
-							afterResponseFn=null, 
-							onErrorFn=retryAddnewOrEdit);	
-	}
-	//Sumamos la selección de totales
-		function sumar(detalle, precio, input) {
-			
-			var monto_total = document.getElementById("det_monto_total").value;
-			
-			if (input.checked === true){
-				monto_total = parseFloat(monto_total) + parseFloat(precio);
-			//	alert("total1: "+monto_total);
-		    } else {
-		    	monto_total = parseFloat(monto_total) - parseFloat(precio);
-		    	//alert("total2: "+monto_total);
-		    }
-			document.form1.det_monto_total.value = monto_total;
+    }
 
-		}
+    function buscarmov()
+    {		
+      
+      document.form1.det_monto_total.value = 0;
+      
 
-		function buscarmov()
-		{		
-			
-			document.form1.det_monto_total.value = 0;
-			
+      var valueCombo = document.getElementById("smn_entidades_rf").value;
+      var valueCombo2 = document.getElementById("smn_sucursal_rf").value;
+      var valueCombo3 = document.getElementById("smn_entidad_financiera_id").value;
+      var valueCombo4 = document.getElementById("smn_cuenta_bancaria_rf").value;
+      var valueCombo5 = document.getElementById("pmd_monto").value;
 
-			var valueCombo = document.getElementById("smn_entidades_rf").value;
-			var valueCombo2 = document.getElementById("smn_sucursal_rf").value;
-			var valueCombo3 = document.getElementById("smn_entidad_financiera_id").value;
-			var valueCombo4 = document.getElementById("smn_cuenta_bancaria_rf").value;
-			var valueCombo5 = document.getElementById("pmd_monto").value;
-
-			
-			
-			//findLocation(geo_id0, '');
-			
-			
-				return ajaxCall(	
-								httpMethod="GET", 
-								uri="${def:actionroot}/form/get_mov_bancario?smn_entidades_rf=" + valueCombo+"&smn_sucursal_rf="+ valueCombo2+"&smn_entidad_financiera_id="+ valueCombo3
-									+"&smn_cuenta_bancaria_rf="+ valueCombo4
-									+"&pmd_monto="+ valueCombo5, 
-								divResponse=null, 
-								divProgress="status", 
-								formName="form1", 
-								afterResponseFn=null,
-								onErrorFn=null);				
-			
-		}
-	
+      
+      
+      //findLocation(geo_id0, '');
+      
+      
+        return ajaxCall(	
+                httpMethod="GET", 
+                uri="${def:actionroot}/form/get_mov_bancario?smn_entidades_rf=" + valueCombo+"&smn_sucursal_rf="+ valueCombo2+"&smn_entidad_financiera_id="+ valueCombo3
+                  +"&smn_cuenta_bancaria_rf="+ valueCombo4
+                  +"&pmd_monto="+ valueCombo5, 
+                divResponse=null, 
+                divProgress="status", 
+                formName="form1", 
+                afterResponseFn=null,
+                onErrorFn=null);				
+      
+    }
+  
 </script>	
 </body>
 </html>

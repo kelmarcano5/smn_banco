@@ -1,51 +1,27 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <validator maxErrors='20'>
-	<!--<parameter id='smn_plantilla_movimiento_bancario_id' type='integer' required='true' maxlen='10'/>-->
-	<parameter id='pmd_fecha' type='date' required='true' maxlen='10'/>
-	<parameter id='pmd_numero_referencia_bancaria' type='varchar' required='true' maxlen='20'/>
-	<parameter id='pmd_descripcion' type='varchar' required='true' maxlen='120'/>
-	<parameter id='pmd_monto' type='double' required='true' maxlen='20'/>
+    <parameter id='pmd_fecha' type='date' required='true' maxlen='10'/>
+    <parameter id='pmd_numero_referencia_bancaria' type='varchar' required='true' maxlen='20'/>
+    <parameter id='pmd_descripcion' type='varchar' required='true' maxlen='120'/>
+    <parameter id='pmd_monto' type='double' required='true' maxlen='20'/>
 
-	<parameter id='smn_equivalencia_doc_bancario_id' type='integer' required='false' maxlen='10'/>
-	<parameter id='smn_tipo_documento_id' type='integer' required='false' maxlen='10'/>
-	<!--<parameter id='smn_tasa_rf' type='integer' required='true' maxlen='10'/>-->
-	<!--<parameter id='smn_moneda_rf' type='integer' required='true' maxlen='10'/>-->
-	<!--<parameter id='pmd_monto_ma' type='double' required='true' maxlen='10'/>
-	<parameter id='pmd_estatus' type='varchar' required='true' maxlen='2'/>
-	<parameter id='pmd_idioma' type='varchar' required='true' maxlen='2'/>
-	<parameter id='pmd_usuario' type='varchar' required='true' maxlen='10'/>
-	<parameter id='pmd_fecha_registro' type='date' required='true' maxlen='10'/>
-	<parameter id='pmd_hora' type='varchar' required='true' maxlen='8'/>-->
+    <parameter id='smn_equivalencia_doc_bancario_id' type='integer' required='false' maxlen='10'/>
+    <parameter id='smn_tipo_documento_id' type='integer' required='false' maxlen='10'/>
 
+    <custom-validator
+        classname='dinamica.validators.GetColValueValidator'
+        on-error-label='${lbl:b_message_error_equivalencia_doc}'
+        parameter='smn_equivalencia_doc_bancario_id'
+        sql='smn_equivalencia_doc_bancario.sql'
+        id='smn_equivalencia_doc_bancario_id'
+    />
 
-	<!--<custom-validator
-		classname='dinamica.validators.DuplicatedKeyValidator'
-			on-error-label='${lbl:b_record_not_duplicated}.'
-			sql='buscarDescripcion.sql'
-			id='pmd_descripcion'/>-->
-
-	<custom-validator
-		classname='dinamica.validators.GetColValueValidator'
-		on-error-label='${lbl:b_message_error_equivalencia_doc}'
-		parameter='smn_equivalencia_doc_bancario_id'
-		sql='smn_equivalencia_doc_bancario.sql'
-		id='smn_equivalencia_doc_bancario_id'
-	/>
-
-	<custom-validator
-		classname='dinamica.validators.GetColValueValidator'
-		on-error-label='${lbl:b_message_error_equivalencia_doc}'
-		parameter='smn_tipo_documento_id'
-		sql='smn_tipo_documento.sql'
-		id='smn_tipo_documento_id'
-	/>
-
-	<!--<custom-validator
-		classname='dinamica.validators.GetColValueValidator'
-		on-error-label='No se encontro la cuenta relacionada al banco'
-		parameter='smn_moneda_rf'
-		sql='smn_moneda.sql'
-		id='smn_moneda_rf'
-	/>-->
+    <custom-validator
+        classname='dinamica.validators.GetColValueValidator'
+        on-error-label='${lbl:b_message_error_equivalencia_doc}'
+        parameter='smn_tipo_documento_id'
+        sql='smn_tipo_documento.sql'
+        id='smn_tipo_documento_id'
+    />
 
 </validator>

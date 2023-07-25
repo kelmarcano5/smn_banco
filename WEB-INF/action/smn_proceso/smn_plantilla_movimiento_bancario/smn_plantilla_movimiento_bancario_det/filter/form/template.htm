@@ -3,15 +3,12 @@
 
 <head>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
-	
-	<!--biblioteca generica JS/Dinamica-->
-	<script type="text/javascript" src="${def:context}/action/script"></script>
-	<script type="text/javascript" src="${def:context}/action/jquery"></script>
-	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+<!--biblioteca generica JS/Dinamica-->
+<script type="text/javascript" src="${def:context}/action/script">
+</script>
 
 </head>
 
@@ -129,12 +126,12 @@
 <script type="text/javascript">
 
 	//inicializacion de la pagina cuando carga
+    var idMovimientoCabecera = "${fld:cabecera_id}";
 	onload = function()
-	{ 
+	{  
+        console.log(idMovimientoCabecera);
 		showFilter();
-		document.form1.pmd_fecha_registro_ini.onkeypress = keypressDate;
-	document.form1.pmd_fecha_registro_fin.onkeypress = keypressDate;
-
+    
 		search();
 	} 
 	
@@ -150,11 +147,11 @@
 	//ejecutar consulta
 	function search()
 	{
-		var url = "${def:actionroot}/search";
+		var url = "${def:actionroot}/search?cabecera_id=${fld:cabecera_id}";
 		
 		//determina si refresca y se para en la pagina actual o en la pagina 1
 		if (currentPage > 0)
-			url = "${def:actionroot}/search?currentpage=" + currentPage;
+			url = "${def:actionroot}/search?cabecera_id=${fld:cabecera_id}&currentpage=" + currentPage;
 
 		//definir funcion goBack()
 		_goBackFn = showFilter;
@@ -175,7 +172,7 @@
 	//mostrar una pagina del grid
 	function viewPage()
 	{
-		var url = "${def:actionroot}/view";
+		var url = "${def:actionroot}../../view";
 		//llama a la funcion para ir a la pagina indicada 
 		gotoPage(url);
 	}		
@@ -241,9 +238,9 @@
 		
 		var uri = "";
 		if (id==null)
-		 	uri = "${def:context}${def:actionroot}/editor/form";
+		 	uri = "${def:context}${def:actionroot}../../editor/form";
 		else
-			uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
+			uri = "${def:context}${def:actionroot}../../editor/form?id=" + id;
 			
 		openDialog("editor", uri, 650, 570);
 		
@@ -258,7 +255,7 @@
 	//eliminar un registro
 	function deleteRecordOK(id) {
 			ajaxCall(httpMethod="GET", 
-							uri="${def:actionroot}/delete?id=" + id,
+							uri="${def:actionroot}../../delete?id=" + id,
 							divResponse=null, 
 							divProgress="status", 
 							formName=null, 
@@ -266,23 +263,24 @@
 							onErrorFn=null);	
 	}
 
-	function showEditor2(id, sta, ent, suc, ban, cta, mto, equi){
-		
-					
-		//editor a nivel de panel iconogr�fico
-		if(sta!='CN'){
-		
-			uri = "${def:context}${def:actionroot}/../editor_conciliar/form?id=" + id+"&smn_entidades_rf="+ent+"&smn_sucursal_rf="+suc+"&smn_entidad_financiera_id="+ban+"&smn_cuenta_bancaria_rf="+cta+"&pmd_monto="+mto+"&smn_equivalencia_ban_rf="+equi;
-			
-				
-			openDialog("editor6", uri, 650, 570);
-		}
-		else
-			alertBox("Movimiento Bancario esta ya conciliado, no procede conciliar", 'Continuar', null, null);
-		
+    function showEditor2(id, sta, ent, suc, ban, cta, mto, equi)
+    {
+        
+                    
+        //editor a nivel de panel iconogr�fico
+        if(sta!='CN'){
+        
+            uri = "${def:context}${def:actionroot}../../editor_conciliar/form?id=" + id+"&smn_entidades_rf="+ent+"&smn_sucursal_rf="+suc+"&smn_entidad_financiera_id="+ban+"&smn_cuenta_bancaria_rf="+cta+"&pmd_monto="+mto+"&smn_equivalencia_ban_rf="+equi;
+            console.log(uri);
+                
+            openDialog("editor6", uri, wdt, hgt);
+        }
+        else
+            alertBox("Movimiento Bancario esta ya conciliado, no procede conciliar", 'Continuar', null, null);
+        
 
-		
-	}
+        
+    }
 
 			
 </script>

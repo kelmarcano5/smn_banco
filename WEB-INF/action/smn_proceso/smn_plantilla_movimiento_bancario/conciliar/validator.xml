@@ -21,6 +21,6 @@
 	<parameter id="monto_ml_nota_debito" type="double" required="false" label="monto_ml_ban" />
 	<parameter id="monto_ml_saldo_final" type="double" required="false" label="monto_ml_ban" />
 	<parameter id="saldo_cta_bancaria_id" type="integer" required="false" label="saldo_cta_bancaria_id" />
-	<parameter id="smn_formas_pago_rf " type="integer" required="false" label="smn_formas_pago_rf " />
+	<parameter id="smn_formas_pago_rf" type="integer" required="false" label="smn_formas_pago_rf " />
 	<parameter id="doc_es_cobranza" type="varchar" required="false" label="doc_es_cobranza" />
 </validator>

@@ -1,6 +1,7 @@
 select 
 	*,
   smn_movimiento_bancario_id as mov_id,
+  NULL::integer as detalle_id,
   smn_base.smn_modulos.mod_codigo as modulo
   
 from smn_banco.smn_movimiento_bancario

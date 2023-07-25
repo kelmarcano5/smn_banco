@@ -2,7 +2,7 @@ listboxClear("smn_cuenta_bancaria_rf");
 
 var optionChoose = document.createElement("option");
 optionChoose.text = '[${lbl:b_choose}]';
-optionChoose.value = "0";
+optionChoose.value = "";
 document.form1.smn_cuenta_bancaria_rf.add(optionChoose, 0);
 
 <smn_cuenta_bancaria_rf_rows>

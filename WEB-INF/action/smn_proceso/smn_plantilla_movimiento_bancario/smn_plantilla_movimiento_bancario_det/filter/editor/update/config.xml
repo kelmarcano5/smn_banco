@@ -25,7 +25,6 @@
 			<colname>pmd_monto_ma</colname>
 			<colname>pmd_estatus</colname>
 			<colname>pmd_fecha_registro</colname>
-			<colname>smn_cliente_rf</colname>
 		
 		</cols>
 		<table>smn_banco.smn_plantilla_movimiento_bancario_det</table>

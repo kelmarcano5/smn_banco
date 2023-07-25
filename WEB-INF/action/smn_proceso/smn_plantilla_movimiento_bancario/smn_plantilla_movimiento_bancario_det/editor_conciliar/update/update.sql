@@ -4,8 +4,7 @@ UPDATE smn_banco.smn_plantilla_movimiento_bancario_det SET
 	pmd_numero_referencia_bancaria=${fld:pmd_numero_referencia_bancaria},
 	smn_equivalencia_doc_bancario_id=${fld:smn_equivalencia_doc_bancario_id},
 	pmd_estatus='CN',
-	pmd_fecha_registro=${fld:pmd_fecha_registro},
-	smn_cliente_rf=${fld:smn_cliente_rf}
+	pmd_fecha_registro=${fld:pmd_fecha_registro}
 
 WHERE
 	smn_plantilla_movimiento_bancario_det_id=${fld:id};
