@@ -6,10 +6,8 @@ import javax.sql.DataSource;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Date;
-<<<<<<< HEAD
 import java.io.Console;
-=======
->>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,11 +21,8 @@ public class cerrarPlantilla extends GenericTransaction{
 	 * @see dinamica.GenericTransaction#service(dinamica.Recordset)
 	 */
 
-<<<<<<< HEAD
 	static File newTextFile = new File("C:/log/log.txt");
-=======
-	static File newTextFile = new File("./log.txt");
->>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
+
 	//static File newTextFile = new File("./log.txt");
 
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -169,9 +164,6 @@ public class cerrarPlantilla extends GenericTransaction{
 									Double monto_ma_ban_dou = Double.parseDouble(monto_ma_ban);
 									inputParams.setValue("monto_ma_ban", monto_ma_ban_dou);
 								}
-<<<<<<< HEAD
-
-=======
 								
 								String smn_formas_pago_rf = plantilladet.getString("smn_formas_pago_rf");
 								int smn_formas_pago_rf_int = Integer.parseInt(smn_formas_pago_rf);
@@ -206,7 +198,6 @@ public class cerrarPlantilla extends GenericTransaction{
 								int documento_general_rf_int = Integer.parseInt(documento_general_rf);
 								inputParams.setValue("documento_general_rf", documento_general_rf_int);
 								
->>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 								String insertmovban = getSQL(getResource("insert_movimiento_ban.sql"), inputParams);
 								Recordset rsinsertmovban = db.get(insertmovban);
 								if(rsinsertmovban.getRecordCount() > 0){
@@ -322,15 +313,13 @@ public class cerrarPlantilla extends GenericTransaction{
 										
 										//-----------------------------
 									}
-<<<<<<< HEAD
-=======
+
 									// PROCESO QUE CREA RELACION DE COBRANZA
 									if(doc_es_cobranza.contains("S")){
 										String insrelcob = getSQL(getResource("query-insert_relacion_cobranza.sql"), inputParams);
 
 										db.exec(insrelcob);
 									}
->>>>>>> bc307d24c29d1044b7ee82ed38f71dbe935112fb
 								}
 							}else{
 								nc=nc+1; //Registro no se concilia

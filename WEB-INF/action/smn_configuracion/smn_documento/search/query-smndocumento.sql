@@ -29,7 +29,8 @@ select
 	smn_banco.smn_documento.doc_idioma,
 	smn_banco.smn_documento.doc_usuario,
 	smn_banco.smn_documento.doc_fecha_registro,
-	smn_banco.smn_documento.doc_hora
+	smn_banco.smn_documento.doc_hora,
+  smn_banco.smn_documento.doc_es_cobranza
 
 from
 		smn_banco.smn_documento

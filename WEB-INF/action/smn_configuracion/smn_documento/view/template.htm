@@ -10,12 +10,13 @@
 	<col width='16%'/>
 	<col width='16%'/>
 	<col width='16%'/>
+	<col width='3%'/>
 	<col width='16%'/>
 
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="10" id="encabezado_tabla">
+		<th colspan="11" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
@@ -31,6 +32,7 @@
 		<th class='sortable' onclick='sortBy("doc_descripcion","query-smndocumento.sql")'>${lbl:b_description} </th>
 		<th class='sortable' onclick='sortBy("doc_maneja_moneda_alterna","query-smndocumento.sql")'>${lbl:b_alternate_currency}</th>
 		<th class='sortable' onclick='sortBy("doc_estatus","query-smndocumento.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("doc_es_cobranza","query-smndocumento.sql")'>Es cobranza</th>
 		<th class='sortable' onclick='sortBy("doc_fecha_registro","query-smndocumento.sql")'>${lbl:b_store_date}</th>
 
 	</tr>
@@ -47,6 +49,7 @@
 		<td align='left'>${fld:doc_descripcion}</td>
 		<td align='left'>${fld:doc_maneja_moneda_alterna}</td>
 		<td align='left'>${fld:doc_estatus}</td>
+		<td align='center'>${fld:doc_es_cobranza}</td>
 		<td>${fld:doc_fecha_registro@dd-MM-yyyy}</td>
 
 	</tr>
