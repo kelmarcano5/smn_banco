@@ -37,7 +37,7 @@
 		<col id='doc_transferencia' label='${lbl:b_transfer}' />
 		<col id='smn_documento_origen_id' label='${lbl:b_origen_document}' />
 		<col id='smn_documento_destino_id' label='${lbl:b_destiny_document}' />
-		<col id='smn_forma_pago_rf' label='${lbl:b_way_to_pay}' />
+		<col id='smn_formas_pago_rf' label='${lbl:b_way_to_pay}' />
 		<col id='doc_estatus' label='${lbl:b_status}' />
 		<col id='doc_vigencia' label='${lbl:b_validation_date}
 		<col id='doc_idioma' label='${lbl:s_profile_lang}' />

@@ -11,6 +11,7 @@
 	<parameter id='smn_documento_destino_id' type='integer' required='false' label='${lbl:b_destiny_document}' maxlen='10'/>
 	<parameter id='smn_forma_pago_id' type='integer' required='false' label='${lbl:b_way_to_pay}' maxlen='10'/>
 	<parameter id='doc_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='doc_es_cobranza' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
 	<parameter id='doc_vigencia' type='date' required='true' label='${lbl:b_validation_date}' maxlen='10'/>
 	<parameter id='id' type='integer' required='true' label='${lbl:b_document}' maxlen='10'/>
 

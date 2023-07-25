@@ -24,7 +24,7 @@ select
 	smn_banco.smn_documento.doc_descripcion,
 	document1.doc_codigo ||' - '||document1.doc_descripcion as smn_documento_origen_id,
 	document2.doc_codigo ||' - '||document2.doc_descripcion as smn_documento_destino_id,
-	smn_base.smn_formas_pago.fop_codigo ||' - '||smn_base.smn_formas_pago.fop_descripcion as smn_forma_pago_rf,
+	smn_base.smn_formas_pago.fop_codigo ||' - '||smn_base.smn_formas_pago.fop_descripcion as smn_formas_pago_rf,
 	smn_banco.smn_documento.doc_vigencia,
 	smn_banco.smn_documento.doc_idioma,
 	smn_banco.smn_documento.doc_usuario,
@@ -37,6 +37,6 @@ from
 	inner join smn_banco.smn_tipo_documento on smn_banco.smn_tipo_documento.smn_tipo_documento_id=smn_banco.smn_documento.smn_tipo_documento_id
 	left outer join smn_banco.smn_documento as document1 on document1.smn_documento_id=smn_banco.smn_documento.smn_documento_origen_id
 	left outer join smn_banco.smn_documento as document2 on document2.smn_documento_id=smn_banco.smn_documento.smn_documento_destino_id
-	left outer join smn_base.smn_formas_pago on smn_base.smn_formas_pago.smn_formas_pago_id=smn_banco.smn_documento.smn_forma_pago_rf
+	left outer join smn_base.smn_formas_pago on smn_base.smn_formas_pago.smn_formas_pago_id=smn_banco.smn_documento.smn_formas_pago_rf
 where
 	smn_banco.smn_documento.smn_documento_id = ${fld:id}

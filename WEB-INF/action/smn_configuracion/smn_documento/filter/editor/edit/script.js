@@ -7,10 +7,11 @@ setComboValue('doc_maneja_moneda_alterna','${fld:doc_maneja_moneda_alterna}','fo
 setComboValue('doc_transferencia','${fld:doc_transferencia}','form1');
 setComboValue('smn_documento_origen_id','${fld:smn_documento_origen_id}','form1');
 setComboValue('smn_documento_destino_id','${fld:smn_documento_destino_id}','form1');
-setComboValue('smn_forma_pago_id','${fld:smn_forma_pago_rf}','form1');
+setComboValue('smn_formas_pago_id','${fld:smn_formas_pago_rf}','form1');
 setComboValue('doc_estatus','${fld:doc_estatus}','form1');
+setComboValue('doc_es_cobranza','${fld:doc_es_cobranza}','form1');
 document.form1.doc_vigencia.value='${fld:doc_vigencia@dd-MM-yyyy}';
-document.form1.id.value='${fld:smn_documento_id@#,###,###}';
+document.form1.id.value='${fld:smn_documento_id@#######}';
  
 document.getElementById("formTitle").innerHTML = "${lbl:b_edit_record}";
 document.getElementById("grabar").disabled=false;

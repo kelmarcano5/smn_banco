@@ -14,7 +14,8 @@ UPDATE smn_banco.smn_documento SET
 	doc_usuario='${def:user}',
 	doc_fecha_registro={d '${def:date}'},
 	doc_hora='${def:time}',
-	smn_forma_pago_rf=${fld:smn_forma_pago_id}
+	smn_formas_pago_rf=${fld:smn_forma_pago_id},
+	doc_es_cobranza=${fld:doc_es_cobranza}
 
 WHERE
 	smn_documento_id=${fld:id}

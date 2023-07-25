@@ -16,7 +16,8 @@ INSERT INTO smn_banco.smn_documento
 	doc_usuario,
 	doc_fecha_registro,
 	doc_hora,
-	smn_forma_pago_rf
+	smn_formas_pago_rf,
+  doc_es_cobranza
 )
 VALUES
 (
@@ -36,5 +37,6 @@ VALUES
 	'${def:user}',
 	{d '${def:date}'},
 	'${def:time}',
-	${fld:smn_forma_pago_id}
+	${fld:smn_forma_pago_id},
+	${fld:doc_es_cobranza}
 )
