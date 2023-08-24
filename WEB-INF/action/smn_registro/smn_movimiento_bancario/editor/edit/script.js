@@ -22,7 +22,7 @@ setComboValue('smn_tasa_rf','${fld:smn_tasa_rf}','form1');
 // setComboValue('mov_estatus_proceso','${fld:mov_estatus_proceso}','form1');
 // setComboValue('mov_estatus','${fld:mov_estatus}','form1');
 //document.form1.mov_fecha_registro.value='${fld:mov_fecha_registro@dd-MM-yyyy}';
-document.form1.id.value='${fld:smn_movimiento_bancario_id@#,###,###}';
+document.form1.id.value='${fld:smn_movimiento_bancario_id@#######}';
  
 document.getElementById("formTitle").innerHTML = "${lbl:b_edit_record}";
 document.getElementById("grabar").disabled=false;

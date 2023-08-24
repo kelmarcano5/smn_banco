@@ -5,7 +5,7 @@
 	<parameter id='pmd_numero_referencia_bancaria' type='varchar' required='true' label='${lbl:b_bank_reference_number}' maxlen='20'/>
 	<parameter id='smn_equivalencia_doc_bancario_id' type='integer' required='true' label='${lbl:b_bank_equivalence}' maxlen='10'/>
 	<parameter id='smn_tipo_documento_id' type='integer' required='true' label='${lbl:b_document_type}' maxlen='10'/>
-	<parameter id='pmd_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='120'/>
+	<parameter id='pmd_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='500'/>
 	<parameter id='pmd_monto' type='double' required='true' label='${lbl:b_amount}' maxlen='10'/>
 	<parameter id='smn_tasa_rf' type='integer' required='false' label='${lbl:b_rate}' maxlen='10'/>
 	<parameter id='smn_moneda_rf' type='integer' required='false' label='${lbl:b_coin}' maxlen='10'/>
